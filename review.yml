@@ -1,0 +1,111 @@
+aid: kinde-so
+name: Kinde
+review:
+  question: Does Kinde expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-02'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Kinde's public developer surface is the
+    Management API - request/response REST over HTTPS - plus OAuth2/OIDC
+    authentication endpoints and outbound webhooks. There is no server-push
+    transport (WebSocket or SSE) on Kinde's own API to model. Event delivery is
+    handled by Kinde POSTing signed webhook payloads to endpoints you register
+    via the Webhooks API; that is server-to-endpoint HTTP, not a client-facing
+    streaming channel, and is out of scope for an AsyncAPI document under current
+    scope.
+findings:
+  summary: |
+    Kinde does not publish a documented public WebSocket API. Kinde is an
+    authentication and user-management (CIAM) platform. Its programmatic surface
+    is the Management API (base https://{subdomain}.kinde.com/api/v1),
+    authenticated with a Bearer JWT obtained through the OAuth2
+    client_credentials flow from a machine-to-machine (M2M) application. The
+    Management API is pure request/response REST over HTTPS. Asynchronous
+    notification of events (user, organization, and other lifecycle events) is
+    delivered via outbound webhooks that Kinde POSTs to endpoints you register
+    through the Webhooks API - not a WebSocket. No realtime, bidirectional, or
+    streaming WebSocket (ws:// or wss://) endpoint is documented on Kinde's own
+    API as of the review date.
+  openSource: |
+    Kinde is a commercial hosted platform, not self-hostable. The kinde-oss
+    GitHub organization publishes open-source SDKs and SDK generators (JS/TS,
+    Python, .NET, Java, Go, and others) plus a typing layer for Kinde workflows,
+    all generated from the official Management API OpenAPI specification
+    (https://api-spec.kinde.com/kinde-management-api-spec.yaml). The API itself
+    is a managed service.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{subdomain}.kinde.com/api/v1
+      documented: true
+      note: Management API. Subdomain-scoped per business. Bearer JWT via OAuth2 client_credentials.
+    - protocol: OAuth2 / OIDC
+      scheme: https
+      documented: true
+      note: Standard OAuth2/OIDC authorization, token, and userinfo endpoints on the business subdomain for end-user auth. Request/response HTTP, not WebSocket.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Kinde POSTs signed event payloads to endpoints registered via the Webhooks API. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Kinde's Management API, authentication, or webhooks documentation as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://{subdomain}.kinde.com/api/v1/users
+    - GET    https://{subdomain}.kinde.com/api/v1/user
+    - GET    https://{subdomain}.kinde.com/api/v1/search/users
+    - POST   https://{subdomain}.kinde.com/api/v1/users/{user_id}/refresh_claims
+    - GET    https://{subdomain}.kinde.com/api/v1/organizations
+    - POST   https://{subdomain}.kinde.com/api/v1/organization
+    - GET    https://{subdomain}.kinde.com/api/v1/organizations/{org_code}/users
+    - GET    https://{subdomain}.kinde.com/api/v1/roles
+    - GET    https://{subdomain}.kinde.com/api/v1/permissions
+    - POST   https://{subdomain}.kinde.com/api/v1/feature_flags
+    - GET    https://{subdomain}.kinde.com/api/v1/applications
+    - GET    https://{subdomain}.kinde.com/api/v1/connections
+    - GET    https://{subdomain}.kinde.com/api/v1/directories
+    - GET    https://{subdomain}.kinde.com/api/v1/apis
+    - GET    https://{subdomain}.kinde.com/api/v1/apis/{api_id}/scopes
+    - GET    https://{subdomain}.kinde.com/api/v1/api_keys
+    - POST   https://{subdomain}.kinde.com/api/v1/api_keys/verify
+    - GET    https://{subdomain}.kinde.com/api/v1/subscribers
+    - GET    https://{subdomain}.kinde.com/api/v1/business
+    - GET    https://{subdomain}.kinde.com/api/v1/industries
+    - GET    https://{subdomain}.kinde.com/api/v1/timezones
+    - GET    https://{subdomain}.kinde.com/api/v1/properties
+    - GET    https://{subdomain}.kinde.com/api/v1/property_categories
+    - GET    https://{subdomain}.kinde.com/api/v1/webhooks
+    - GET    https://{subdomain}.kinde.com/api/v1/event_types
+    - GET    https://{subdomain}.kinde.com/api/v1/events/{event_id}
+    - GET    https://{subdomain}.kinde.com/api/v1/billing/entitlements
+    - GET    https://{subdomain}.kinde.com/api/v1/billing/agreements
+    - POST   https://{subdomain}.kinde.com/api/v1/billing/meter_usage
+sources:
+  - url: https://docs.kinde.com/kinde-apis/management/
+    type: APIReference
+    note: Management API reference; all endpoints are HTTPS REST under /api/v1. No WebSocket mentioned.
+  - url: https://api-spec.kinde.com/kinde-management-api-spec.yaml
+    type: OpenAPI
+    note: Official Kinde Management API OpenAPI 3.0 spec (101 paths, 175 operations). Bearer JWT security only; REST throughout.
+  - url: https://docs.kinde.com/developer-tools/kinde-api/connect-to-kinde-api/
+    type: Documentation
+    note: Auth is OAuth2 client_credentials from an M2M app; Bearer JWT. Request/response, not WebSocket.
+  - url: https://docs.kinde.com/developer-tools/kinde-api/api-rate-limits/
+    type: Documentation
+    note: Rate limiter and concurrency limiter; 429 on throttle with RateLimit-Reset header. REST semantics.
+  - url: https://github.com/kinde-oss
+    type: SourceCode
+    note: Open-source SDKs and OpenAPI-based SDK generators. The API service itself is hosted/commercial.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Kinde's own public API is
+    request/response REST (the Management API) plus OAuth2/OIDC auth endpoints
+    and outbound webhooks. No AsyncAPI document was created because there is no
+    client-facing server-push transport (WebSocket or SSE) on Kinde's own API to
+    model; asynchronous events are delivered by Kinde POSTing signed webhook
+    payloads to endpoints registered through the Webhooks API.

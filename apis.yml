@@ -1,0 +1,318 @@
+aid: kinde-so
+url: https://raw.githubusercontent.com/api-evangelist/kinde-so/refs/heads/main/apis.yml
+name: Kinde
+kind: company
+description: Kinde is an authentication and user management platform for SaaS and
+  B2B applications - handling sign-up and login, multi-factor authentication,
+  organizations, roles and permissions, feature flags, and usage-based billing.
+  The Kinde Management API programmatically manages a Kinde business over a
+  subdomain-scoped base URL (https://{yourbusiness}.kinde.com/api/v1),
+  authenticated with a Bearer JWT obtained via the OAuth2 client_credentials flow
+  from a machine-to-machine (M2M) application. Almost everything available in the
+  Kinde admin UI - users, organizations, roles, permissions, feature flags,
+  applications, connections, APIs and scopes, subscribers, properties, webhooks,
+  and billing - is available through the API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Authentication
+- User Management
+- Identity
+- Authorization
+- SaaS
+- CIAM
+created: '2026-07-02'
+modified: '2026-07-02'
+specificationVersion: '0.19'
+apis:
+- aid: kinde-so:kinde-so-users-api
+  name: Kinde Users API
+  tags:
+  - Users
+  - Identities
+  - Sessions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/
+    type: Documentation
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/users
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Create, list, get, update, and delete users, plus manage their
+    identities, sessions, passwords, MFA factors, per-user properties, and
+    feature-flag overrides. Includes user search and refresh-claims.
+- aid: kinde-so:kinde-so-organizations-api
+  name: Kinde Organizations API
+  tags:
+  - Organizations
+  - B2B
+  - Multi-Tenancy
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Manage organizations (tenants) and their membership - create and
+    update orgs, add and remove users, assign org-scoped roles, permissions, and
+    feature flags, manage invites, connections, properties, logos, passkeys, MFA,
+    and sessions for each organization.
+- aid: kinde-so:kinde-so-roles-api
+  name: Kinde Roles API
+  tags:
+  - Roles
+  - RBAC
+  - Authorization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Define role-based access control - create, list, update, and delete
+    roles, and attach permissions, API scopes, and users to each role.
+- aid: kinde-so:kinde-so-permissions-api
+  name: Kinde Permissions API
+  tags:
+  - Permissions
+  - Authorization
+  - RBAC
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Create, list, update, and delete the granular permissions that are
+    grouped into roles and enforced across your applications and APIs.
+- aid: kinde-so:kinde-so-feature-flags-api
+  name: Kinde Feature Flags API
+  tags:
+  - Feature Flags
+  - Rollouts
+  - Configuration
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Create and delete feature flags and set their values at the
+    environment, organization, and individual-user levels for progressive
+    rollouts and per-tenant configuration.
+- aid: kinde-so:kinde-so-applications-api
+  name: Kinde Applications API
+  tags:
+  - Applications
+  - OAuth Clients
+  - Callbacks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Manage the OAuth applications (clients) registered in your business -
+    create, get, update, and delete apps, wire up their connections and
+    properties, configure token customization, and manage authorized redirect and
+    logout callback URLs.
+- aid: kinde-so:kinde-so-connections-api
+  name: Kinde Connections API
+  tags:
+  - Connections
+  - SSO
+  - Directories
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Manage authentication connections - social and enterprise SSO
+    identity providers, connected third-party apps (OAuth token exchange), and
+    SCIM directories used to provision users into your organizations.
+- aid: kinde-so:kinde-so-apis-scopes-api
+  name: Kinde APIs and Scopes API
+  tags:
+  - APIs
+  - Scopes
+  - API Keys
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Register the APIs your applications protect, define and assign their
+    scopes, authorize applications against them, and issue and verify API keys for
+    machine-to-machine access.
+- aid: kinde-so:kinde-so-subscribers-api
+  name: Kinde Subscribers API
+  tags:
+  - Subscribers
+  - Marketing
+  - Contacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: List, get, and create subscribers - the marketing contacts captured
+    by your Kinde business, distinct from authenticated users.
+- aid: kinde-so:kinde-so-business-api
+  name: Kinde Business API
+  tags:
+  - Business
+  - Environment
+  - Reference Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/business
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/business
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Read and update business-level settings and environment
+    configuration (logos, feature flags, environment variables, passkey policy),
+    plus reference data endpoints for industries and timezones.
+- aid: kinde-so:kinde-so-properties-api
+  name: Kinde Properties API
+  tags:
+  - Properties
+  - Metadata
+  - Custom Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Define custom properties and property categories used to attach
+    structured metadata to users, organizations, and applications, and surface it
+    in tokens.
+- aid: kinde-so:kinde-so-webhooks-api
+  name: Kinde Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Eventing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Create, list, update, and delete webhook endpoints that receive
+    Kinde events (user, organization, and other lifecycle events), enumerate the
+    available event types, and retrieve individual delivered events.
+- aid: kinde-so:kinde-so-billing-api
+  name: Kinde Billing API
+  tags:
+  - Billing
+  - Entitlements
+  - Metering
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  properties:
+  - url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+    type: APIReference
+  - url: openapi/kinde-so-openapi.yml
+    type: OpenAPI
+  - url: collections/kinde-so.postman_collection.json
+    type: PostmanCollection
+  - url: collections/kinde-so.opencollection.json
+    type: OpenCollection
+  description: Kinde's own usage-based billing product - read customer
+    entitlements, create and list billing agreements, and record metered usage for
+    plan-gated features.
+common:
+- type: GitHubOrganization
+  url: https://github.com/kinde-oss
+- type: LinkedIn
+  url: https://www.linkedin.com/company/kinde
+- type: Website
+  url: https://kinde.com
+- type: Documentation
+  url: https://docs.kinde.com
+- type: Plans
+  url: plans/kinde-so-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/kinde-so-rate-limits.yml
+- type: FinOps
+  url: finops/kinde-so-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

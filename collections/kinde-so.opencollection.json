@@ -1,0 +1,3512 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kinde Management API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/api_keys"
+          },
+          "docs": "Get API keys"
+        },
+        {
+          "info": {
+            "name": "Create API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/api_keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create API key"
+        },
+        {
+          "info": {
+            "name": "Get API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/api_keys/{{key_id}}",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get API key"
+        },
+        {
+          "info": {
+            "name": "Rotate API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/api_keys/{{key_id}}",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rotate API key"
+        },
+        {
+          "info": {
+            "name": "Delete API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/api_keys/{{key_id}}",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete API key"
+        },
+        {
+          "info": {
+            "name": "Verify API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/api_keys/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify API key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "APIs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get APIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis"
+          },
+          "docs": "Get APIs"
+        },
+        {
+          "info": {
+            "name": "Create API",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create API"
+        },
+        {
+          "info": {
+            "name": "Get API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get API"
+        },
+        {
+          "info": {
+            "name": "Delete API",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete API"
+        },
+        {
+          "info": {
+            "name": "Get API scopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/scopes",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get API scopes"
+        },
+        {
+          "info": {
+            "name": "Create API scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/scopes",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create API scope"
+        },
+        {
+          "info": {
+            "name": "Get API scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get API scope"
+        },
+        {
+          "info": {
+            "name": "Update API scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update API scope"
+        },
+        {
+          "info": {
+            "name": "Delete API scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete API scope"
+        },
+        {
+          "info": {
+            "name": "Authorize API applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/applications",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authorize API applications"
+        },
+        {
+          "info": {
+            "name": "Add scope to API application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/applications/{{application_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add scope to API application"
+        },
+        {
+          "info": {
+            "name": "Delete API application scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/apis/{{api_id}}/applications/{{application_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete API application scope"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications"
+          },
+          "docs": "Get applications"
+        },
+        {
+          "info": {
+            "name": "Create application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create application"
+        },
+        {
+          "info": {
+            "name": "Get application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get application"
+        },
+        {
+          "info": {
+            "name": "Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Application"
+        },
+        {
+          "info": {
+            "name": "Delete application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete application"
+        },
+        {
+          "info": {
+            "name": "Get connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}/connections",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connections"
+        },
+        {
+          "info": {
+            "name": "Enable connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable connection"
+        },
+        {
+          "info": {
+            "name": "Remove connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove connection"
+        },
+        {
+          "info": {
+            "name": "Get property values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}/properties",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get property values"
+        },
+        {
+          "info": {
+            "name": "Update property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}/properties/{{property_key}}",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "property_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update property"
+        },
+        {
+          "info": {
+            "name": "Update application tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{application_id}}/tokens",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update application tokens"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Billing Entitlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get billing entitlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/billing/entitlements"
+          },
+          "docs": "Get billing entitlements"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Billing Agreements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get billing agreements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/billing/agreements"
+          },
+          "docs": "Get billing agreements"
+        },
+        {
+          "info": {
+            "name": "Create billing agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/billing/agreements",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create billing agreement"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Billing Meter Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create meter usage record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/billing/meter_usage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create meter usage record"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Business",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get business",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/business"
+          },
+          "docs": "Get business"
+        },
+        {
+          "info": {
+            "name": "Update business",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/business",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update business"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Industries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get industries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/industries"
+          },
+          "docs": "Get industries"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Timezones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get timezones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/timezones"
+          },
+          "docs": "Get timezones"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Callbacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Callback URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_redirect_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Callback URLs"
+        },
+        {
+          "info": {
+            "name": "Add Redirect Callback URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_redirect_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Redirect Callback URLs"
+        },
+        {
+          "info": {
+            "name": "Replace Redirect Callback URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_redirect_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace Redirect Callback URLs"
+        },
+        {
+          "info": {
+            "name": "Delete Callback URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_redirect_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Callback URLs"
+        },
+        {
+          "info": {
+            "name": "List logout URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_logout_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List logout URLs"
+        },
+        {
+          "info": {
+            "name": "Add logout redirect URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_logout_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add logout redirect URLs"
+        },
+        {
+          "info": {
+            "name": "Replace logout redirect URls",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_logout_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace logout redirect URls"
+        },
+        {
+          "info": {
+            "name": "Delete Logout URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/applications/{{app_id}}/auth_logout_urls",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Logout URLs"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connected Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Connected App URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connected_apps/auth_url"
+          },
+          "docs": "Get Connected App URL"
+        },
+        {
+          "info": {
+            "name": "Get Connected App Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connected_apps/token"
+          },
+          "docs": "Get Connected App Token"
+        },
+        {
+          "info": {
+            "name": "Revoke Connected App Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connected_apps/revoke",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke Connected App Token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connections"
+          },
+          "docs": "Get connections"
+        },
+        {
+          "info": {
+            "name": "Create Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Connection"
+        },
+        {
+          "info": {
+            "name": "Get Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Connection"
+        },
+        {
+          "info": {
+            "name": "Replace Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace Connection"
+        },
+        {
+          "info": {
+            "name": "Update Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Connection"
+        },
+        {
+          "info": {
+            "name": "Delete Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Connection"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Directories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SCIM directories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/directories"
+          },
+          "docs": "Get SCIM directories"
+        },
+        {
+          "info": {
+            "name": "Create SCIM directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/directories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create SCIM directory"
+        },
+        {
+          "info": {
+            "name": "Get SCIM directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/directories/{{directory_id}}",
+            "params": [
+              {
+                "name": "directory_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get SCIM directory"
+        },
+        {
+          "info": {
+            "name": "Update SCIM directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/directories/{{directory_id}}",
+            "params": [
+              {
+                "name": "directory_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update SCIM directory"
+        },
+        {
+          "info": {
+            "name": "Delete SCIM directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/directories/{{directory_id}}",
+            "params": [
+              {
+                "name": "directory_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete SCIM directory"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment"
+          },
+          "docs": "Get environment"
+        },
+        {
+          "info": {
+            "name": "List Environment Feature Flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/feature_flags"
+          },
+          "docs": "List Environment Feature Flags"
+        },
+        {
+          "info": {
+            "name": "Delete Environment Feature Flag Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/feature_flags"
+          },
+          "docs": "Delete Environment Feature Flag Overrides"
+        },
+        {
+          "info": {
+            "name": "Update Environment Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Environment Feature Flag Override"
+        },
+        {
+          "info": {
+            "name": "Delete Environment Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Environment Feature Flag Override"
+        },
+        {
+          "info": {
+            "name": "Read logo details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/logos"
+          },
+          "docs": "Read logo details"
+        },
+        {
+          "info": {
+            "name": "Add logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/logos/{{type}}",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add logo"
+        },
+        {
+          "info": {
+            "name": "Delete logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment/logos/{{type}}",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete logo"
+        },
+        {
+          "info": {
+            "name": "Get environment passkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/passkey"
+          },
+          "docs": "Get environment passkey settings"
+        },
+        {
+          "info": {
+            "name": "Update environment passkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/passkey",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update environment passkey settings"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environment variables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get environment variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment_variables"
+          },
+          "docs": "Get environment variables"
+        },
+        {
+          "info": {
+            "name": "Create environment variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment_variables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create environment variable"
+        },
+        {
+          "info": {
+            "name": "Get environment variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment_variables/{{variable_id}}",
+            "params": [
+              {
+                "name": "variable_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get environment variable"
+        },
+        {
+          "info": {
+            "name": "Update environment variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment_variables/{{variable_id}}",
+            "params": [
+              {
+                "name": "variable_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update environment variable"
+        },
+        {
+          "info": {
+            "name": "Delete environment variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/environment_variables/{{variable_id}}",
+            "params": [
+              {
+                "name": "variable_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete environment variable"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Feature Flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Feature Flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/feature_flags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Feature Flag"
+        },
+        {
+          "info": {
+            "name": "Replace Feature Flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace Feature Flag"
+        },
+        {
+          "info": {
+            "name": "Delete Feature Flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Feature Flag"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Identities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/identities/{{identity_id}}",
+            "params": [
+              {
+                "name": "identity_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get identity"
+        },
+        {
+          "info": {
+            "name": "Update identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/identities/{{identity_id}}",
+            "params": [
+              {
+                "name": "identity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update identity"
+        },
+        {
+          "info": {
+            "name": "Delete identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/identities/{{identity_id}}",
+            "params": [
+              {
+                "name": "identity_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete identity"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}/invites",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization invites"
+        },
+        {
+          "info": {
+            "name": "Create organization invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}/invites",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create organization invite"
+        },
+        {
+          "info": {
+            "name": "Get organization invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}/invites/{{invite_code}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "invite_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization invite"
+        },
+        {
+          "info": {
+            "name": "Delete organization invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}/invites/{{invite_code}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "invite_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete organization invite"
+        },
+        {
+          "info": {
+            "name": "Get organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization"
+          },
+          "docs": "Get organization"
+        },
+        {
+          "info": {
+            "name": "Create organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create organization"
+        },
+        {
+          "info": {
+            "name": "Get organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations"
+          },
+          "docs": "Get organizations"
+        },
+        {
+          "info": {
+            "name": "Update Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization"
+        },
+        {
+          "info": {
+            "name": "Delete Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization"
+        },
+        {
+          "info": {
+            "name": "Get organization users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization users"
+        },
+        {
+          "info": {
+            "name": "Add Organization Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Organization Users"
+        },
+        {
+          "info": {
+            "name": "Update Organization Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization Users"
+        },
+        {
+          "info": {
+            "name": "List Organization User Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/roles",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization User Roles"
+        },
+        {
+          "info": {
+            "name": "Add Organization User Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/roles",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Organization User Role"
+        },
+        {
+          "info": {
+            "name": "Delete Organization User Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/roles/{{role_id}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization User Role"
+        },
+        {
+          "info": {
+            "name": "List organization role users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/roles/{{role_id}}/users",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List organization role users"
+        },
+        {
+          "info": {
+            "name": "List Organization User Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/permissions",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization User Permissions"
+        },
+        {
+          "info": {
+            "name": "Add Organization User Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/permissions",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Organization User Permission"
+        },
+        {
+          "info": {
+            "name": "Delete Organization User Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/permissions/{{permission_id}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permission_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization User Permission"
+        },
+        {
+          "info": {
+            "name": "Remove Organization User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Organization User"
+        },
+        {
+          "info": {
+            "name": "Add scope to organization user api",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/apis/{{api_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add scope to organization user api"
+        },
+        {
+          "info": {
+            "name": "Delete scope from organization user API",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/apis/{{api_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete scope from organization user API"
+        },
+        {
+          "info": {
+            "name": "Get an organization user's MFA configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/mfa",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an organization user's MFA configuration"
+        },
+        {
+          "info": {
+            "name": "Reset all organization MFA for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/mfa",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset all organization MFA for a user"
+        },
+        {
+          "info": {
+            "name": "Reset specific organization MFA for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/users/{{user_id}}/mfa/{{factor_id}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "factor_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset specific organization MFA for a user"
+        },
+        {
+          "info": {
+            "name": "List Organization Feature Flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/feature_flags",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Organization Feature Flags"
+        },
+        {
+          "info": {
+            "name": "Delete Organization Feature Flag Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/feature_flags",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization Feature Flag Overrides"
+        },
+        {
+          "info": {
+            "name": "Update Organization Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization Feature Flag Override"
+        },
+        {
+          "info": {
+            "name": "Delete Organization Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Organization Feature Flag Override"
+        },
+        {
+          "info": {
+            "name": "Update Organization Property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/properties/{{property_key}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "property_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization Property value"
+        },
+        {
+          "info": {
+            "name": "Get Organization Property Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/properties",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Organization Property Values"
+        },
+        {
+          "info": {
+            "name": "Update Organization Property values",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/properties",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Organization Property values"
+        },
+        {
+          "info": {
+            "name": "Replace Organization MFA Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/mfa",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace Organization MFA Configuration"
+        },
+        {
+          "info": {
+            "name": "Get organization passkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/passkey",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization passkey settings"
+        },
+        {
+          "info": {
+            "name": "Update organization passkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/passkey",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organization passkey settings"
+        },
+        {
+          "info": {
+            "name": "Delete organization handle",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organization/{{org_code}}/handle",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete organization handle"
+        },
+        {
+          "info": {
+            "name": "Read organization logo details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/logos",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read organization logo details"
+        },
+        {
+          "info": {
+            "name": "Add organization logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/logos/{{type}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add organization logo"
+        },
+        {
+          "info": {
+            "name": "Delete organization logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/logos/{{type}}",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete organization logo"
+        },
+        {
+          "info": {
+            "name": "Get connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{organization_code}}/connections",
+            "params": [
+              {
+                "name": "organization_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connections"
+        },
+        {
+          "info": {
+            "name": "Enable connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{organization_code}}/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "organization_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable connection"
+        },
+        {
+          "info": {
+            "name": "Remove connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{organization_code}}/connections/{{connection_id}}",
+            "params": [
+              {
+                "name": "organization_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove connection"
+        },
+        {
+          "info": {
+            "name": "Update organization session configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/organizations/{{org_code}}/sessions",
+            "params": [
+              {
+                "name": "org_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organization session configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MFA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Replace MFA Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/mfa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace MFA Configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/permissions"
+          },
+          "docs": "List Permissions"
+        },
+        {
+          "info": {
+            "name": "Create Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/permissions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Permission"
+        },
+        {
+          "info": {
+            "name": "Update Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/permissions/{{permission_id}}",
+            "params": [
+              {
+                "name": "permission_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Permission"
+        },
+        {
+          "info": {
+            "name": "Delete Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/permissions/{{permission_id}}",
+            "params": [
+              {
+                "name": "permission_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Permission"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/properties"
+          },
+          "docs": "List properties"
+        },
+        {
+          "info": {
+            "name": "Create Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Property"
+        },
+        {
+          "info": {
+            "name": "Update Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/properties/{{property_id}}",
+            "params": [
+              {
+                "name": "property_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Property"
+        },
+        {
+          "info": {
+            "name": "Delete Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/properties/{{property_id}}",
+            "params": [
+              {
+                "name": "property_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Property"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Property Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/property_categories"
+          },
+          "docs": "List categories"
+        },
+        {
+          "info": {
+            "name": "Create Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/property_categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Category"
+        },
+        {
+          "info": {
+            "name": "Update Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/property_categories/{{category_id}}",
+            "params": [
+              {
+                "name": "category_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Category"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles"
+          },
+          "docs": "List roles"
+        },
+        {
+          "info": {
+            "name": "Create role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create role"
+        },
+        {
+          "info": {
+            "name": "Get role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get role"
+        },
+        {
+          "info": {
+            "name": "Update role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update role"
+        },
+        {
+          "info": {
+            "name": "Delete role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete role"
+        },
+        {
+          "info": {
+            "name": "Get role scopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/scopes",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get role scopes"
+        },
+        {
+          "info": {
+            "name": "Add role scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/scopes",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add role scope"
+        },
+        {
+          "info": {
+            "name": "Delete role scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/scopes/{{scope_id}}",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete role scope"
+        },
+        {
+          "info": {
+            "name": "Get role permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/permissions",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get role permissions"
+        },
+        {
+          "info": {
+            "name": "Update role permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/permissions",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update role permissions"
+        },
+        {
+          "info": {
+            "name": "List role users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/users",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List role users"
+        },
+        {
+          "info": {
+            "name": "Remove role permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/roles/{{role_id}}/permissions/{{permission_id}}",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permission_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove role permission"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/search/users"
+          },
+          "docs": "Search users"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscribers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Subscribers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/subscribers"
+          },
+          "docs": "List Subscribers"
+        },
+        {
+          "info": {
+            "name": "Create Subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/subscribers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Subscriber"
+        },
+        {
+          "info": {
+            "name": "Get Subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/subscribers/{{subscriber_id}}",
+            "params": [
+              {
+                "name": "subscriber_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Subscriber"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users"
+          },
+          "docs": "Get users"
+        },
+        {
+          "info": {
+            "name": "Refresh User Claims and Invalidate Cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/refresh_claims",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refresh User Claims and Invalidate Cache"
+        },
+        {
+          "info": {
+            "name": "Get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/user"
+          },
+          "docs": "Get user"
+        },
+        {
+          "info": {
+            "name": "Create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create user"
+        },
+        {
+          "info": {
+            "name": "Update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update user"
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/user"
+          },
+          "docs": "Delete user"
+        },
+        {
+          "info": {
+            "name": "Update User Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/feature_flags/{{feature_flag_key}}",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update User Feature Flag Override"
+        },
+        {
+          "info": {
+            "name": "Update Property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/properties/{{property_key}}",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "property_key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Property value"
+        },
+        {
+          "info": {
+            "name": "Get property values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/properties",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get property values"
+        },
+        {
+          "info": {
+            "name": "Update Property values",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/properties",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Property values"
+        },
+        {
+          "info": {
+            "name": "Set User password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/password",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set User password"
+        },
+        {
+          "info": {
+            "name": "Get identities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/identities",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get identities"
+        },
+        {
+          "info": {
+            "name": "Create identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/identities",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create identity"
+        },
+        {
+          "info": {
+            "name": "Get user sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/sessions",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user sessions"
+        },
+        {
+          "info": {
+            "name": "Delete user sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/sessions",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete user sessions"
+        },
+        {
+          "info": {
+            "name": "Get user's MFA configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/mfa",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user's MFA configuration"
+        },
+        {
+          "info": {
+            "name": "Reset all environment MFA for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/mfa",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset all environment MFA for a user"
+        },
+        {
+          "info": {
+            "name": "Reset specific environment MFA for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/users/{{user_id}}/mfa/{{factor_id}}",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "factor_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset specific environment MFA for a user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/events/{{event_id}}",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Event"
+        },
+        {
+          "info": {
+            "name": "List Event Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/event_types"
+          },
+          "docs": "List Event Types"
+        },
+        {
+          "info": {
+            "name": "Update a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/webhooks/{{webhook_id}}",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Webhook"
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/webhooks/{{webhook_id}}",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Webhook"
+        },
+        {
+          "info": {
+            "name": "List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/webhooks"
+          },
+          "docs": "List Webhooks"
+        },
+        {
+          "info": {
+            "name": "Create a Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{subdomain}}.kinde.com/api/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Webhook"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,219 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Kinde
+providerId: kinde-so
+created: '2026-07-02'
+modified: '2026-07-02'
+reconciled: false
+tags:
+- Authentication
+- User Management
+- Identity
+- SaaS
+- MAU
+- Plans
+description: >-
+  Kinde is priced primarily on Monthly Active Users (MAU). Every plan includes a
+  large free MAU allowance (10,500 MAU at the time of writing); usage above the
+  allowance is billed per additional MAU at a per-plan rate that decreases as you
+  move up tiers. Users on a paid subscription (via Kinde's own billing product)
+  are not counted toward MAU. Tiers are Free ($0), Pro ($25/mo), Plus ($75/mo,
+  the recommended tier), and Scale ($250/mo), with Enterprise available on
+  request. The Management API is included with every plan and has no separate
+  per-call fee. Verify current prices and allowances on the Kinde pricing page
+  during reconciliation.
+notes: >-
+  Additional usage-based costs exist alongside MAU: SMS is roughly $0.07 per
+  message (or bring your own provider) and payment transaction fees on Kinde's
+  billing product run about 0.5%-0.7% by tier. Enterprise SSO connections are
+  included from the Plus tier up. Numbers reflect the pricing page as observed on
+  the created date and should be reconciled before use.
+sources:
+- https://kinde.com/pricing/
+- https://docs.kinde.com
+- https://docs.kinde.com/kinde-apis/management/
+plans:
+- id: kinde-free
+  name: Free
+  type: free
+  description: >-
+    Free-forever tier including 10,500 MAU, email and social login, MFA, B2B
+    organizations, a custom domain, 2 custom roles, and 10 feature flags. Full
+    access to the Management API.
+  entries:
+  - label: Included MAU
+    name: free_mau
+    type: usage
+    metric: users
+    limit: 10500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: Email and Social Login
+  - name: Multi-Factor Authentication
+  - name: B2B Organizations
+  - name: Custom Domain
+  - name: 2 Custom Roles
+  - name: 10 Feature Flags
+  - name: Management API
+- id: kinde-pro
+  name: Pro
+  type: paid
+  description: >-
+    Everything in Free plus API keys, unlimited webhooks, unlimited custom roles
+    and permissions, and removal of Kinde branding. 10,500 MAU included, then
+    $0.0175 per additional MAU.
+  entries:
+  - label: Base Subscription
+    name: pro_base
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $25/month
+    userMultiplied: false
+  - label: Included MAU
+    name: pro_included_mau
+    type: usage
+    metric: users
+    limit: 10500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Additional MAU
+    name: pro_overage_mau
+    type: usage
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.0175 per MAU above 10,500
+    userMultiplied: true
+  elements:
+  - name: API Keys
+  - name: Unlimited Webhooks
+  - name: Unlimited Custom Roles and Permissions
+  - name: Remove Kinde Branding
+- id: kinde-plus
+  name: Plus
+  type: paid
+  description: >-
+    Recommended tier. Everything in Pro plus Enterprise SSO included, API scopes,
+    organization-owned M2M applications, 6 environments, and early access to new
+    features. A 6% MAU discount applies - 10,500 MAU included, then $0.0163 per
+    additional MAU.
+  entries:
+  - label: Base Subscription
+    name: plus_base
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $75/month
+    userMultiplied: false
+  - label: Included MAU
+    name: plus_included_mau
+    type: usage
+    metric: users
+    limit: 10500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Additional MAU
+    name: plus_overage_mau
+    type: usage
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.0163 per MAU above 10,500 (6% discount)
+    userMultiplied: true
+  elements:
+  - name: Enterprise SSO Included
+  - name: API Scopes
+  - name: Organization-Owned M2M Applications
+  - name: 6 Environments
+  - name: Early Access Features
+- id: kinde-scale
+  name: Scale
+  type: paid
+  description: >-
+    Everything in Plus plus a 13% MAU discount, 11 environments, custom
+    domain/email per organization, SCIM support, full ISO 27001 reports, and
+    per-organization MFA management. 10,500 MAU included, then $0.0151 per
+    additional MAU.
+  entries:
+  - label: Base Subscription
+    name: scale_base
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $250/month
+    userMultiplied: false
+  - label: Included MAU
+    name: scale_included_mau
+    type: usage
+    metric: users
+    limit: 10500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Additional MAU
+    name: scale_overage_mau
+    type: usage
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.0151 per MAU above 10,500 (13% discount)
+    userMultiplied: true
+  elements:
+  - name: 11 Environments
+  - name: Custom Domain and Email per Organization
+  - name: SCIM Support
+  - name: ISO 27001 Reports
+  - name: Per-Organization MFA Management
+- id: kinde-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom agreement for high-volume or regulated deployments - negotiated MAU
+    pricing, security reviews, SLAs, and dedicated support. Contact Kinde.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom MAU Pricing
+  - name: SLAs and Dedicated Support
+  - name: Security and Compliance Reviews
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,68 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Kinde
+providerId: kinde-so
+created: '2026-07-02'
+modified: '2026-07-02'
+reconciled: false
+tags:
+- Authentication
+- User Management
+- Identity
+- Rate Limiting
+- Quotas
+description: >-
+  Kinde applies both a rate limiter and a concurrency limiter to the Management
+  API but does not publish fixed numeric per-minute request thresholds - the
+  basic rate limiter restricts requests per minute and Kinde may rate limit
+  incoming traffic, adjusting limits per account on request. Two hard, documented
+  limits do apply to every account: a maximum page size of 500 on GET endpoints
+  that accept the page_size parameter, and a maximum of 100 objects updated in a
+  single request to bulk POST/PATCH endpoints. When throttled the API returns
+  HTTP 429, and the RateLimit-Reset response header returns the number of seconds
+  until the limit resets.
+notes: >-
+  Specific requests-per-minute values by plan tier are not published; contact
+  Kinde support with your use case and expected traffic if you need an extended
+  window or higher limits. Kinde's billing product also lets a business define
+  its own per-plan API request properties (for example api_requests_per_minute)
+  to gate its customers - that is a separate, customer-defined mechanism, not
+  Kinde's own Management API limit.
+sources:
+- https://docs.kinde.com/developer-tools/kinde-api/api-rate-limits/
+- https://docs.kinde.com/kinde-apis/management/
+- https://kinde.com/pricing/
+responseCodes:
+  throttled: 429
+limits:
+- name: Management API Request Rate
+  scope: account
+  metric: requests
+  limit: not published (per-minute limiter; adjustable per account)
+  notes: Basic rate limiter restricts requests per minute; Kinde does not publish a fixed number.
+- name: Concurrency
+  scope: account
+  metric: concurrent requests
+  limit: not published
+  notes: A concurrency limiter caps simultaneous in-flight requests in addition to the rate limiter.
+- name: Page Size
+  scope: request
+  metric: records
+  limit: 500
+  notes: Maximum page_size on GET endpoints that support pagination.
+- name: Bulk Update Objects
+  scope: request
+  metric: objects
+  limit: 100
+  notes: Maximum objects updatable in a single POST/PATCH request to bulk endpoints.
+policies:
+- name: Retry-After / RateLimit-Reset
+  description: On a 429, the RateLimit-Reset header returns the number of seconds until the rate limit resets; clients should wait that long before retrying.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on 429 responses and honor the RateLimit-Reset header.
+- name: Pagination
+  description: Use the maximum page size of 500 and follow next-page tokens rather than issuing many small requests to reduce rate-limit pressure.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -299,6 +299,14 @@ apis:
     entitlements, create and list billing agreements, and record metered usage for
     plan-gated features.
 common:
+- type: TrustCenter
+  url: security/kinde-so-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/kinde-so-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/kinde-so-domain-security.yml
+- type: Authentication
+  url: authentication/kinde-so-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/kinde-oss
 - type: LinkedIn
@@ -313,6 +321,8 @@ common:
   url: rate-limits/kinde-so-rate-limits.yml
 - type: FinOps
   url: finops/kinde-so-finops.yml
+- url: https://www.kinde.com/blog/rss.xml
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/kinde-so-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: kindeBearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Requires an access token obtained using the OAuth2 client_credentials flow from
+    an authorized M2M application.
+  sources:
+  - openapi/kinde-so-openapi.yml

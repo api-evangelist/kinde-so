@@ -299,6 +299,8 @@ apis:
     entitlements, create and list billing agreements, and record metered usage for
     plan-gated features.
 common:
+- type: AgenticAccess
+  url: agentic-access/kinde-so-agentic-access.yml
 - type: TrustCenter
   url: security/kinde-so-trust-center.yml
 - type: VulnerabilityDisclosure

@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Business API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Business
+paths:
+  /api/v1/business:
+    get:
+      tags:
+      - Business
+      summary: Get business
+      operationId: getBusiness
+      description: "Get your business details.\n\n<div>\n  <code>read:businesses</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Business
+      summary: Update business
+      operationId: updateBusiness
+      description: "Update your business details.\n\n<div>\n  <code>update:businesses</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

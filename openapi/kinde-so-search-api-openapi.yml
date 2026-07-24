@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Search API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Search
+paths:
+  /api/v1/search/users:
+    get:
+      tags:
+      - Search
+      summary: Search users
+      operationId: searchUsers
+      description: "Search for users based on the provided query string. Set query to '*' to filter by other parameters only.\nThe number of records to return at a time can be controlled using the `page_size` query string parameter.\n\n<div>\n  <code>read:users</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: query
+        in: query
+        description: Search the users by email or name. Use '*' to search all.
+        schema:
+          type: string
+      - name: api_scopes
+        in: query
+        description: Search the users by api scopes.
+        schema:
+          type: string
+      - name: properties
+        in: query
+        schema:
+          type: object
+      - name: starting_after
+        in: query
+        description: The ID of the user to start after.
+        schema:
+          type: string
+      - name: ending_before
+        in: query
+        description: The ID of the user to end before.
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. One or more of (comma-separated): "organizations", "identities", "properties".'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

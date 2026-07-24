@@ -1,0 +1,553 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Users API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Users
+paths:
+  /api/v1/users:
+    get:
+      tags:
+      - Users
+      summary: Get users
+      operationId: getUsers
+      description: "The returned list can be sorted by full name or email address in ascending or descending order. The number of records to return at a time can also be controlled using the `page_size` query string parameter.\n\n<div>\n  <code>read:users</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: user_id
+        in: query
+        description: Filter the results by User ID. The query string should be comma separated and url encoded.
+        schema:
+          type: string
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: Filter the results by email address. The query string should be comma separated and url encoded.
+        schema:
+          type: string
+      - name: username
+        in: query
+        description: Filter the results by username. The query string should be comma separated and url encoded.
+        schema:
+          type: string
+      - name: phone
+        in: query
+        description: Filter the results by phone. The query string should be comma separated and url encoded.
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. One or more of (comma-separated): "organizations", "identities", "billing".'
+        schema:
+          type: string
+      - name: has_organization
+        in: query
+        description: Filter the results by if the user has at least one organization assigned.
+        schema:
+          type: boolean
+      - name: active_since
+        in: query
+        description: Filter the results to only include users who have been active since this date. Date should be in ISO 8601 format.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/refresh_claims:
+    post:
+      tags:
+      - Users
+      summary: Refresh User Claims and Invalidate Cache
+      operationId: refreshUserClaims
+      description: "Refreshes the user's claims and invalidates the current cache.\n\n<div>\n  <code>update:user_refresh_claims</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The id of the user whose claims needs to be updated.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/user:
+    get:
+      tags:
+      - Users
+      summary: Get user
+      operationId: getUserData
+      description: "Retrieve a user record.\n\n<div>\n  <code>read:users</code>\n</div>"
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. One or more of (comma-separated): "organizations", "identities", "billing".'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Users
+      summary: Create user
+      operationId: createUser
+      description: "Creates a user record and optionally zero or more identities for the user. An example identity could be the email\naddress of the user.\n\n<div>\n  <code>create:users</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Users
+      summary: Update user
+      operationId: updateUser
+      description: "Update a user record.\n\n<div>\n  <code>update:users</code>\n</div>"
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Delete user
+      operationId: deleteUser
+      description: "Delete a user record.\n\n<div>\n  <code>delete:users</code>\n</div>"
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      - name: is_delete_profile
+        in: query
+        description: Delete all data and remove the user's profile from all of Kinde, including the subscriber list
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/feature_flags/{feature_flag_key}:
+    patch:
+      tags:
+      - Users
+      summary: Update User Feature Flag Override
+      operationId: UpdateUserFeatureFlagOverride
+      description: "Update user feature flag override.\n\n<div>\n  <code>update:user_feature_flags</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The identifier for the feature flag
+        schema:
+          type: string
+      - name: value
+        in: query
+        required: true
+        description: Override value
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/properties/{property_key}:
+    put:
+      tags:
+      - Users
+      summary: Update Property value
+      operationId: UpdateUserProperty
+      description: "Update property value.\n\n<div>\n  <code>update:user_properties</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      - name: property_key
+        in: path
+        required: true
+        description: The identifier for the property
+        schema:
+          type: string
+      - name: value
+        in: query
+        required: true
+        description: The new property value
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/properties:
+    get:
+      tags:
+      - Users
+      summary: Get property values
+      operationId: GetUserPropertyValues
+      description: "Gets properties for an user by ID.\n\n<div>\n  <code>read:user_properties</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user's ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Users
+      summary: Update Property values
+      operationId: UpdateUserProperties
+      description: "Update property values.\n\n<div>\n  <code>update:user_properties</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/password:
+    put:
+      tags:
+      - Users
+      summary: Set User password
+      operationId: SetUserPassword
+      description: "Set user password.\n\n<div>\n  <code>update:user_passwords</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/identities:
+    get:
+      tags:
+      - Users
+      summary: Get identities
+      operationId: GetUserIdentities
+      description: "Gets a list of identities for an user by ID.\n\n<div>\n  <code>read:user_identities</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user's ID.
+        schema:
+          type: string
+      - name: starting_after
+        in: query
+        description: The ID of the identity to start after.
+        schema:
+          type: string
+      - name: ending_before
+        in: query
+        description: The ID of the identity to end before.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Users
+      summary: Create identity
+      operationId: CreateUserIdentity
+      description: "Creates an identity for a user.\n\n<div>\n  <code>create:user_identities</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The user's ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/sessions:
+    get:
+      tags:
+      - Users
+      summary: Get user sessions
+      operationId: GetUserSessions
+      description: "Retrieve the list of active sessions for a specific user.\n\n<div>\n  <code>read:user_sessions</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Delete user sessions
+      operationId: DeleteUserSessions
+      description: "Invalidate user sessions.\n\n<div>\n  <code>delete:user_sessions</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/mfa:
+    get:
+      tags:
+      - Users
+      summary: Get user's MFA configuration
+      operationId: GetUsersMFA
+      description: "Get a user’s MFA configuration.\n\n<div>\n  <code>read:user_mfa</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Reset all environment MFA for a user
+      operationId: ResetUsersMFAAll
+      description: "Reset all environment MFA factors for a user.\n\n<div>\n  <code>delete:user_mfa</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/users/{user_id}/mfa/{factor_id}:
+    delete:
+      tags:
+      - Users
+      summary: Reset specific environment MFA for a user
+      operationId: ResetUsersMFA
+      description: "Reset a specific environment MFA factor for a user.\n\n<div>\n  <code>delete:user_mfa</code>\n</div>"
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      - name: factor_id
+        in: path
+        required: true
+        description: The identifier for the MFA factor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

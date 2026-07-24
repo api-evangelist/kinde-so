@@ -1,0 +1,335 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys APIs API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: APIs
+paths:
+  /api/v1/apis:
+    get:
+      tags:
+      - APIs
+      summary: Get APIs
+      operationId: getAPIs
+      description: "Returns a list of your APIs. The APIs are returned sorted by name.\n\n<div>\n  <code>read:apis</code>\n</div>"
+      parameters:
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. Allowed value: "scopes".'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - APIs
+      summary: Create API
+      operationId: addAPIs
+      description: "Register a new API. For more information read [Register and manage APIs](https://docs.kinde.com/developer-tools/your-apis/register-manage-apis/).\n\n<div>\n  <code>create:apis</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/apis/{api_id}:
+    get:
+      tags:
+      - APIs
+      summary: Get API
+      operationId: getAPI
+      description: "Retrieve API details by ID.\n\n<div>\n  <code>read:apis</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - APIs
+      summary: Delete API
+      operationId: deleteAPI
+      description: "Delete an API you previously created.\n\n<div>\n  <code>delete:apis</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/apis/{api_id}/scopes:
+    get:
+      tags:
+      - APIs
+      summary: Get API scopes
+      operationId: getAPIScopes
+      description: "Retrieve API scopes by API ID.\n\n<div>\n  <code>read:api_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - APIs
+      summary: Create API scope
+      operationId: addAPIScope
+      description: "Create a new API scope.\n\n<div>\n  <code>create:api_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/apis/{api_id}/scopes/{scope_id}:
+    get:
+      tags:
+      - APIs
+      summary: Get API scope
+      operationId: getAPIScope
+      description: "Retrieve API scope by API ID.\n\n<div>\n  <code>read:api_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - APIs
+      summary: Update API scope
+      operationId: updateAPIScope
+      description: "Update an API scope.\n\n<div>\n  <code>update:api_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - APIs
+      summary: Delete API scope
+      operationId: deleteAPIScope
+      description: "Delete an API scope you previously created.\n\n<div>\n  <code>delete:apis_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/apis/{api_id}/applications:
+    patch:
+      tags:
+      - APIs
+      summary: Authorize API applications
+      operationId: updateAPIApplications
+      description: "Authorize applications to be allowed to request access tokens for an API\n\n<div>\n  <code>update:apis</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/apis/{api_id}/applications/{application_id}/scopes/{scope_id}:
+    post:
+      tags:
+      - APIs
+      summary: Add scope to API application
+      operationId: addAPIApplicationScope
+      description: "Add a scope to an API application.\n\n<div>\n  <code>create:api_application_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: application_id
+        in: path
+        required: true
+        description: Application ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - APIs
+      summary: Delete API application scope
+      operationId: deleteAPIApplicationScope
+      description: "Delete an API application scope you previously created.\n\n<div>\n  <code>delete:apis_application_scopes</code>\n</div>"
+      parameters:
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: application_id
+        in: path
+        required: true
+        description: Application ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

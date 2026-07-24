@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Roles API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Roles
+paths:
+  /api/v1/roles:
+    get:
+      tags:
+      - Roles
+      summary: List roles
+      operationId: GetRoles
+      description: "The returned list can be sorted by role name or role key in ascending or descending order. The number of records to return at a time can also be controlled using the `page_size` query string parameter.\n\n<div>\n  <code>read:roles</code>\n</div>"
+      parameters:
+      - name: sort
+        in: query
+        description: Field and order to sort the result by.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Roles
+      summary: Create role
+      operationId: CreateRole
+      description: "Create role.\n\n<div>\n  <code>create:roles</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/roles/{role_id}:
+    get:
+      tags:
+      - Roles
+      summary: Get role
+      operationId: GetRole
+      description: "Get a role\n\n<div>\n  <code>read:roles</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The identifier for the role.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Roles
+      summary: Update role
+      operationId: UpdateRoles
+      description: "Update a role\n\n<div>\n  <code>update:roles</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The identifier for the role.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Roles
+      summary: Delete role
+      operationId: DeleteRole
+      description: "Delete role\n\n<div>\n  <code>delete:roles</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The identifier for the role.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/roles/{role_id}/scopes:
+    get:
+      tags:
+      - Roles
+      summary: Get role scopes
+      operationId: GetRoleScopes
+      description: "Get scopes for a role.\n\n<div>\n  <code>read:role_scopes</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The role id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Roles
+      summary: Add role scope
+      operationId: AddRoleScope
+      description: "Add scope to role.\n\n<div>\n  <code>create:role_scopes</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The role id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/roles/{role_id}/scopes/{scope_id}:
+    delete:
+      tags:
+      - Roles
+      summary: Delete role scope
+      operationId: DeleteRoleScope
+      description: "Delete scope from role.\n\n<div>\n  <code>delete:role_scopes</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The role id.
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: The scope id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/roles/{role_id}/permissions:
+    get:
+      tags:
+      - Roles
+      summary: Get role permissions
+      operationId: GetRolePermissions
+      description: "Get permissions for a role.\n\n<div>\n  <code>read:role_permissions</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The role's public id.
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Field and order to sort the result by.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Roles
+      summary: Update role permissions
+      operationId: UpdateRolePermissions
+      description: "Update role permissions.\n\n<div>\n  <code>update:role_permissions</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The identifier for the role.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/roles/{role_id}/users:
+    get:
+      tags:
+      - Roles
+      summary: List role users
+      operationId: GetRoleUsers
+      description: "Get users that have a given role, across all organizations. Each user entry\nincludes the organization codes where they hold that role.\n\n<div>\n  <code>read:organization_user_roles</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The role's public id.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/roles/{role_id}/permissions/{permission_id}:
+    delete:
+      tags:
+      - Roles
+      summary: Remove role permission
+      operationId: RemoveRolePermission
+      description: "Remove a permission from a role.\n\n<div>\n  <code>delete:role_permissions</code>\n</div>"
+      parameters:
+      - name: role_id
+        in: path
+        required: true
+        description: The role's public id.
+        schema:
+          type: string
+      - name: permission_id
+        in: path
+        required: true
+        description: The permission's public id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

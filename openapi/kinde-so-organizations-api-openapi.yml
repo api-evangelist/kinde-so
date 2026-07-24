@@ -1,0 +1,1356 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Organizations API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Organizations
+paths:
+  /api/v1/organization/{org_code}/invites:
+    get:
+      tags:
+      - Organizations
+      summary: Get organization invites
+      operationId: getOrganizationInvites
+      description: "Get a list of invitations for an organization. By default, only pending (non-revoked, non-accepted) invitations are returned.\n\n<div>\n  <code>read:organization_invites</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Field and order to sort the result by.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      - name: include_revoked
+        in: query
+        description: Include revoked invitations in the results.
+        schema:
+          type: boolean
+      - name: include_accepted
+        in: query
+        description: Include accepted invitations in the results.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Organizations
+      summary: Create organization invite
+      operationId: createOrganizationInvite
+      description: 'Create a new invitation for an organization. An invitation email will be sent to the provided email address if `send_email` is set to `true`.
+
+
+        Invitations cannot be created for organizations that are managed by directory sync; user and role changes for those organizations must be made in the upstream identity provider.
+
+
+        Roles that require an explicit assignment permission cannot be granted to an invitee unless the caller (or the user the token represents) holds that permission. On Kinde-hosted p'
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organization/{org_code}/invites/{invite_code}:
+    get:
+      tags:
+      - Organizations
+      summary: Get organization invite
+      operationId: getOrganizationInvite
+      description: "Get details of a specific invitation by its code.\n\n<div>\n  <code>read:organization_invites</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: invite_code
+        in: path
+        required: true
+        description: The invitation's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Delete organization invite
+      operationId: deleteOrganizationInvite
+      description: "Revoke (delete) an invitation. This will mark the invitation as revoked and prevent it from being accepted.\n\n<div>\n  <code>delete:organization_invites</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: invite_code
+        in: path
+        required: true
+        description: The invitation's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organization:
+    get:
+      tags:
+      - Organizations
+      summary: Get organization
+      operationId: getOrganization
+      description: "Retrieve organization details by code.\n\n<div>\n  <code>read:organizations</code>\n</div>"
+      parameters:
+      - name: code
+        in: query
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. Allowed value: "billing".'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Organizations
+      summary: Create organization
+      operationId: createOrganization
+      description: "Create a new organization. To learn more read about [multi tenancy using organizations](https://docs.kinde.com/build/organizations/multi-tenancy-using-organizations/)\n\n<div>\n  <code>create:organizations</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations:
+    get:
+      tags:
+      - Organizations
+      summary: Get organizations
+      operationId: getOrganizations
+      description: "Get a list of organizations.\n\n<div>\n  <code>read:organizations</code>\n</div>"
+      parameters:
+      - name: sort
+        in: query
+        description: Field and order to sort the result by.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organization/{org_code}:
+    patch:
+      tags:
+      - Organizations
+      summary: Update Organization
+      operationId: updateOrganization
+      description: "Update an organization.\n\n<div>\n  <code>update:organizations</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. Allowed value: "billing".'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Delete Organization
+      operationId: deleteOrganization
+      description: "Delete an organization.\n\n<div>\n  <code>delete:organizations</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users:
+    get:
+      tags:
+      - Organizations
+      summary: Get organization users
+      operationId: GetOrganizationUsers
+      description: "Get user details for all members of an organization.\n\n<div>\n  <code>read:organization_users</code>\n</div>"
+      parameters:
+      - name: sort
+        in: query
+        description: Field and order to sort the result by.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: permissions
+        in: query
+        description: Filter by user permissions comma separated (where all match)
+        schema:
+          type: string
+      - name: roles
+        in: query
+        description: Filter by user roles comma separated (where all match)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Organizations
+      summary: Add Organization Users
+      operationId: AddOrganizationUsers
+      description: "Add existing users to an organization.\n\n<div>\n  <code>create:organization_users</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Organizations
+      summary: Update Organization Users
+      operationId: UpdateOrganizationUsers
+      description: "Update users that belong to an organization.\n\n<div>\n  <code>update:organization_users</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/roles:
+    get:
+      tags:
+      - Organizations
+      summary: List Organization User Roles
+      operationId: GetOrganizationUserRoles
+      description: "Get roles for an organization user.\n\n<div>\n  <code>read:organization_user_roles</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Organizations
+      summary: Add Organization User Role
+      operationId: CreateOrganizationUserRole
+      description: "Add role to an organization user.\n\n<div>\n  <code>create:organization_user_roles</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/roles/{role_id}:
+    delete:
+      tags:
+      - Organizations
+      summary: Delete Organization User Role
+      operationId: DeleteOrganizationUserRole
+      description: "Delete role for an organization user.\n\n<div>\n  <code>delete:organization_user_roles</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      - name: role_id
+        in: path
+        required: true
+        description: The role id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/roles/{role_id}/users:
+    get:
+      tags:
+      - Organizations
+      summary: List organization role users
+      operationId: GetOrganizationRoleUsers
+      description: "Get users that have a given role within a specific organization.\n\n<div>\n  <code>read:organization_user_roles</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: role_id
+        in: path
+        required: true
+        description: The role's public id.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/permissions:
+    get:
+      tags:
+      - Organizations
+      summary: List Organization User Permissions
+      operationId: GetOrganizationUserPermissions
+      description: "Get permissions for an organization user.\n\n<div>\n  <code>read:organization_user_permissions</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      - name: expand
+        in: query
+        description: 'Additional data to include in the response. Allowed value: "roles".'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Organizations
+      summary: Add Organization User Permission
+      operationId: CreateOrganizationUserPermission
+      description: "Add permission to an organization user.\n\n<div>\n  <code>create:organization_user_permissions</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/permissions/{permission_id}:
+    delete:
+      tags:
+      - Organizations
+      summary: Delete Organization User Permission
+      operationId: DeleteOrganizationUserPermission
+      description: "Delete permission for an organization user.\n\n<div>\n  <code>delete:organization_user_permissions</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      - name: permission_id
+        in: path
+        required: true
+        description: The permission id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}:
+    delete:
+      tags:
+      - Organizations
+      summary: Remove Organization User
+      operationId: RemoveOrganizationUser
+      description: "Remove user from an organization.\n\n<div>\n  <code>delete:organization_users</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The user's id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/apis/{api_id}/scopes/{scope_id}:
+    post:
+      tags:
+      - Organizations
+      summary: Add scope to organization user api
+      operationId: addOrganizationUserAPIScope
+      description: "Add a scope to an organization user api.\n\n<div>\n  <code>create:organization_user_api_scopes</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: User ID
+        schema:
+          type: string
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Delete scope from organization user API
+      operationId: deleteOrganizationUserAPIScope
+      description: "Delete a scope from an organization user api you previously created.\n\n<div>\n  <code>delete:organization_user_api_scopes</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: User ID
+        schema:
+          type: string
+      - name: api_id
+        in: path
+        required: true
+        description: API ID
+        schema:
+          type: string
+      - name: scope_id
+        in: path
+        required: true
+        description: Scope ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/mfa:
+    get:
+      tags:
+      - Organizations
+      summary: Get an organization user's MFA configuration
+      operationId: GetOrgUserMFA
+      description: "Get an organization user’s MFA configuration.\n\n<div>\n  <code>read:organization_user_mfa</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Reset all organization MFA for a user
+      operationId: ResetOrgUserMFAAll
+      description: "Reset all organization MFA factors for a user.\n\n<div>\n  <code>delete:organization_user_mfa</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/users/{user_id}/mfa/{factor_id}:
+    delete:
+      tags:
+      - Organizations
+      summary: Reset specific organization MFA for a user
+      operationId: ResetOrgUserMFA
+      description: "Reset a specific organization MFA factor for a user.\n\n<div>\n  <code>delete:organization_user_mfa</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        description: The identifier for the user
+        schema:
+          type: string
+      - name: factor_id
+        in: path
+        required: true
+        description: The identifier for the MFA factor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/feature_flags:
+    get:
+      tags:
+      - Organizations
+      summary: List Organization Feature Flags
+      operationId: GetOrganizationFeatureFlags
+      description: "Get all organization feature flags.\n\n<div>\n  <code>read:organization_feature_flags</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Delete Organization Feature Flag Overrides
+      operationId: DeleteOrganizationFeatureFlagOverrides
+      description: "Delete all organization feature flag overrides.\n\n<div>\n  <code>delete:organization_feature_flags</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/feature_flags/{feature_flag_key}:
+    patch:
+      tags:
+      - Organizations
+      summary: Update Organization Feature Flag Override
+      operationId: UpdateOrganizationFeatureFlagOverride
+      description: "Update organization feature flag override.\n\n<div>\n  <code>update:organization_feature_flags</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization
+        schema:
+          type: string
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The identifier for the feature flag
+        schema:
+          type: string
+      - name: value
+        in: query
+        required: true
+        description: Override value
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Delete Organization Feature Flag Override
+      operationId: DeleteOrganizationFeatureFlagOverride
+      description: "Delete organization feature flag override.\n\n<div>\n  <code>delete:organization_feature_flags</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization.
+        schema:
+          type: string
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The identifier for the feature flag.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/properties/{property_key}:
+    put:
+      tags:
+      - Organizations
+      summary: Update Organization Property value
+      operationId: UpdateOrganizationProperty
+      description: "Update organization property value.\n\n<div>\n  <code>update:organization_properties</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization
+        schema:
+          type: string
+      - name: property_key
+        in: path
+        required: true
+        description: The identifier for the property
+        schema:
+          type: string
+      - name: value
+        in: query
+        required: true
+        description: The new property value
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/properties:
+    get:
+      tags:
+      - Organizations
+      summary: Get Organization Property Values
+      operationId: GetOrganizationPropertyValues
+      description: "Gets properties for an organization by org code.\n\n<div>\n  <code>read:organization_properties</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Organizations
+      summary: Update Organization Property values
+      operationId: UpdateOrganizationProperties
+      description: "Update organization property values.\n\n<div>\n  <code>update:organization_properties</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/mfa:
+    put:
+      tags:
+      - Organizations
+      summary: Replace Organization MFA Configuration
+      operationId: ReplaceOrganizationMFA
+      description: "Replace Organization MFA Configuration.\n\n<div>\n  <code>update:organization_mfa</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The identifier for the organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/passkey:
+    get:
+      tags:
+      - Organizations
+      summary: Get organization passkey settings
+      operationId: GetOrganizationPasskey
+      description: "Retrieve passkey settings for an organization, including whether the organization overrides the environment default.\n\n<div>\n  <code>read:organization_passkey</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    put:
+      tags:
+      - Organizations
+      summary: Update organization passkey settings
+      operationId: UpdateOrganizationPasskey
+      description: "Update passkey settings for an organization. Set `is_override_environment_passkey_settings` to `false` to revert to the environment default without providing a policy.\n\n<div>\n  <code>update:organization_passkey</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organization/{org_code}/handle:
+    delete:
+      tags:
+      - Organizations
+      summary: Delete organization handle
+      operationId: DeleteOrganizationHandle
+      description: "Delete organization handle\n\n<div>\n  <code>delete:organization_handles</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/logos:
+    get:
+      tags:
+      - Organizations
+      summary: Read organization logo details
+      operationId: ReadOrganizationLogo
+      description: "Read organization logo details\n\n<div>\n  <code>read:organizations</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/logos/{type}:
+    post:
+      tags:
+      - Organizations
+      summary: Add organization logo
+      operationId: AddOrganizationLogo
+      description: "Add organization logo\n\n<div>\n  <code>update:organizations</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        description: The type of logo to add.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Delete organization logo
+      operationId: DeleteOrganizationLogo
+      description: "Delete organization logo\n\n<div>\n  <code>update:organizations</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        description: The type of logo to delete.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{organization_code}/connections:
+    get:
+      tags:
+      - Organizations
+      summary: Get connections
+      operationId: GetOrganizationConnections
+      description: "Gets all connections for an organization.\n\n<div>\n  <code>read:organization_connections</code>\n</div>"
+      parameters:
+      - name: organization_code
+        in: path
+        required: true
+        description: The organization code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{organization_code}/connections/{connection_id}:
+    post:
+      tags:
+      - Organizations
+      summary: Enable connection
+      operationId: EnableOrgConnection
+      description: "Enable an auth connection for an organization.\n\n<div>\n  <code>create:organization_connections</code>\n</div>"
+      parameters:
+      - name: organization_code
+        in: path
+        required: true
+        description: The unique code for the organization.
+        schema:
+          type: string
+      - name: connection_id
+        in: path
+        required: true
+        description: The identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Organizations
+      summary: Remove connection
+      operationId: RemoveOrgConnection
+      description: "Turn off an auth connection for an organization\n\n<div>\n  <code>delete:organization_connections</code>\n</div>"
+      parameters:
+      - name: organization_code
+        in: path
+        required: true
+        description: The unique code for the organization.
+        schema:
+          type: string
+      - name: connection_id
+        in: path
+        required: true
+        description: The identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/organizations/{org_code}/sessions:
+    patch:
+      tags:
+      - Organizations
+      summary: Update organization session configuration
+      operationId: UpdateOrganizationSessions
+      description: "Update the organization's session configuration.\n\n<div>\n  <code>update:organizations</code>\n</div>"
+      parameters:
+      - name: org_code
+        in: path
+        required: true
+        description: The organization's code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

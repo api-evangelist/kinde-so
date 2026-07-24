@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Directories API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Directories
+paths:
+  /api/v1/directories:
+    get:
+      tags:
+      - Directories
+      summary: Get SCIM directories
+      operationId: getDirectories
+      description: "Returns a list of SCIM directories for your organization.\n\n<div>\n  <code>read:scim_directories</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 50 if parameter not sent.
+        schema:
+          type: integer
+      - name: starting_after
+        in: query
+        description: The ID of the directory to start after.
+        schema:
+          type: string
+      - name: organization_code
+        in: query
+        description: Filter by organization code to get directories for a specific organization.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Directories
+      summary: Create SCIM directory
+      operationId: createDirectory
+      description: "Create a new SCIM directory for user and group synchronization.\n\n<div>\n  <code>create:scim_directories</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/directories/{directory_id}:
+    parameters:
+    - name: directory_id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Directories
+      summary: Get SCIM directory
+      operationId: getDirectory
+      description: "Retrieve SCIM directory details by ID.\n\n<div>\n  <code>read:scim_directories</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Directories
+      summary: Update SCIM directory
+      operationId: updateDirectory
+      description: "Update SCIM directory configuration.\n\n<div>\n  <code>update:scim_directories</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Directories
+      summary: Delete SCIM directory
+      operationId: deleteDirectory
+      description: "Delete a SCIM directory and all associated data.\n\n<div>\n  <code>delete:scim_directories</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

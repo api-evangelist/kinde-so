@@ -1,0 +1,181 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Connections API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Connections
+paths:
+  /api/v1/connections:
+    get:
+      tags:
+      - Connections
+      summary: Get connections
+      operationId: GetConnections
+      description: "Returns a list of authentication connections. Optionally you can filter this by a home realm domain.\n\n<div>\n  <code>read:connections</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: home_realm_domain
+        in: query
+        description: Filter the results by the home realm domain.
+        schema:
+          type: string
+      - name: starting_after
+        in: query
+        description: The ID of the connection to start after.
+        schema:
+          type: string
+      - name: ending_before
+        in: query
+        description: The ID of the connection to end before.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Connections
+      summary: Create Connection
+      operationId: CreateConnection
+      description: "Create Connection.\n\n<div>\n  <code>create:connections</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/connections/{connection_id}:
+    get:
+      tags:
+      - Connections
+      summary: Get Connection
+      operationId: GetConnection
+      description: "Get Connection.\n\n<div>\n  <code>read:connections</code>\n</div>"
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        description: The unique identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    put:
+      tags:
+      - Connections
+      summary: Replace Connection
+      operationId: ReplaceConnection
+      description: "Replace Connection Config.\n\n<div>\n  <code>update:connections</code>\n</div>"
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        description: The unique identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Connections
+      summary: Update Connection
+      operationId: UpdateConnection
+      description: "Update Connection.\n\n<div>\n  <code>update:connections</code>\n</div>"
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        description: The unique identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Connections
+      summary: Delete Connection
+      operationId: deleteConnection
+      description: "Delete connection.\n\n<div>\n  <code>delete:connections</code>\n</div>"
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        description: The identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

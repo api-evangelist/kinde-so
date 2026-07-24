@@ -1,0 +1,185 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: API Keys
+paths:
+  /api/v1/api_keys:
+    get:
+      tags:
+      - API Keys
+      summary: Get API keys
+      operationId: getApiKeys
+      description: "Returns a list of API keys.\n\n<div>\n  <code>read:api_keys</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 50 if parameter not sent.
+        schema:
+          type: integer
+      - name: starting_after
+        in: query
+        description: The ID of the API key to start after.
+        schema:
+          type: string
+      - name: key_type
+        in: query
+        description: Filter by API key type (organization or user).
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Filter by API key status (active, inactive, revoked).
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        description: Filter by user ID to get API keys associated with a specific user.
+        schema:
+          type: string
+      - name: org_code
+        in: query
+        description: Filter by organization code to get API keys associated with a specific organization.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - API Keys
+      summary: Create API key
+      operationId: createApiKey
+      description: "Create a new API key.\n\n<div>\n  <code>create:api_keys</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/api_keys/{key_id}:
+    get:
+      tags:
+      - API Keys
+      summary: Get API key
+      operationId: getApiKey
+      description: "Retrieve API key details by ID.\n\n<div>\n  <code>read:api_keys</code>\n</div>"
+      parameters:
+      - name: key_id
+        in: path
+        required: true
+        description: The ID of the API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    put:
+      tags:
+      - API Keys
+      summary: Rotate API key
+      operationId: rotateApiKey
+      description: "Rotate an API key to generate a new key while maintaining the same permissions and associations.\n\n<div>\n  <code>update:api_keys</code>\n</div>"
+      parameters:
+      - name: key_id
+        in: path
+        required: true
+        description: The ID of the API key to rotate.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - API Keys
+      summary: Delete API key
+      operationId: deleteApiKey
+      description: "Delete an API key.\n\n<div>\n  <code>delete:api_keys</code>\n</div>"
+      parameters:
+      - name: key_id
+        in: path
+        required: true
+        description: The ID of the API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/api_keys/verify:
+    post:
+      tags:
+      - API Keys
+      summary: Verify API key
+      operationId: verifyApiKey
+      description: Verify an API key (public endpoint, no authentication required).
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

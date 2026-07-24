@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Feature Flags API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Feature Flags
+paths:
+  /api/v1/feature_flags:
+    post:
+      tags:
+      - Feature Flags
+      summary: Create Feature Flag
+      operationId: CreateFeatureFlag
+      description: "Create feature flag.\n\n<div>\n  <code>create:feature_flags</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/feature_flags/{feature_flag_key}:
+    put:
+      tags:
+      - Feature Flags
+      summary: Replace Feature Flag
+      operationId: UpdateFeatureFlag
+      description: "Update feature flag.\n\n<div>\n  <code>update:feature_flags</code>\n</div>"
+      parameters:
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The key identifier for the feature flag.
+        schema:
+          type: string
+      - name: name
+        in: query
+        required: true
+        description: The name of the flag.
+        schema:
+          type: string
+      - name: description
+        in: query
+        required: true
+        description: Description of the flag purpose.
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: true
+        description: The variable type
+        schema:
+          type: string
+      - name: allow_override_level
+        in: query
+        required: true
+        description: Allow the flag to be overridden at a different level.
+        schema:
+          type: string
+      - name: default_value
+        in: query
+        required: true
+        description: Default value for the flag used by environments and organizations.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Feature Flags
+      summary: Delete Feature Flag
+      operationId: DeleteFeatureFlag
+      description: "Delete feature flag\n\n<div>\n  <code>delete:feature_flags</code>\n</div>"
+      parameters:
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The identifier for the feature flag.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

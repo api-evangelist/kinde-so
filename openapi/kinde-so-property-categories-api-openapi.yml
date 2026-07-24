@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Property Categories API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Property Categories
+paths:
+  /api/v1/property_categories:
+    get:
+      tags:
+      - Property Categories
+      summary: List categories
+      operationId: GetCategories
+      description: "Returns a list of categories.\n\n<div>\n  <code>read:property_categories</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: starting_after
+        in: query
+        description: The ID of the category to start after.
+        schema:
+          type: string
+      - name: ending_before
+        in: query
+        description: The ID of the category to end before.
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: Filter the results by User or Organization context
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Property Categories
+      summary: Create Category
+      operationId: CreateCategory
+      description: "Create category.\n\n<div>\n  <code>create:property_categories</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/property_categories/{category_id}:
+    put:
+      tags:
+      - Property Categories
+      summary: Update Category
+      operationId: UpdateCategory
+      description: "Update category.\n\n<div>\n  <code>update:property_categories</code>\n</div>"
+      parameters:
+      - name: category_id
+        in: path
+        required: true
+        description: The unique identifier for the category.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

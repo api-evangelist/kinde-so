@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Callbacks API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Callbacks
+paths:
+  /api/v1/applications/{app_id}/auth_redirect_urls:
+    get:
+      tags:
+      - Callbacks
+      summary: List Callback URLs
+      operationId: getCallbackURLs
+      description: "Returns an application's redirect callback URLs.\n\n<div>\n  <code>read:applications_redirect_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Callbacks
+      summary: Add Redirect Callback URLs
+      operationId: addRedirectCallbackURLs
+      description: "Add additional redirect callback URLs.\n\n<div>\n  <code>create:applications_redirect_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    put:
+      tags:
+      - Callbacks
+      summary: Replace Redirect Callback URLs
+      operationId: replaceRedirectCallbackURLs
+      description: "Replace all redirect callback URLs.\n\n<div>\n  <code>update:applications_redirect_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Callbacks
+      summary: Delete Callback URLs
+      operationId: deleteCallbackURLs
+      description: "Delete callback URLs.\n\n<div>\n  <code>delete:applications_redirect_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      - name: urls
+        in: query
+        required: true
+        description: Urls to delete, comma separated and url encoded.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{app_id}/auth_logout_urls:
+    get:
+      tags:
+      - Callbacks
+      summary: List logout URLs
+      operationId: getLogoutURLs
+      description: "Returns an application's logout redirect URLs.\n\n<div>\n  <code>read:application_logout_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Callbacks
+      summary: Add logout redirect URLs
+      operationId: addLogoutRedirectURLs
+      description: "Add additional logout redirect URLs.\n\n<div>\n  <code>create:application_logout_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    put:
+      tags:
+      - Callbacks
+      summary: Replace logout redirect URls
+      operationId: replaceLogoutRedirectURLs
+      description: "Replace all logout redirect URLs.\n\n<div>\n  <code>update:application_logout_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Callbacks
+      summary: Delete Logout URLs
+      operationId: deleteLogoutURLs
+      description: "Delete logout URLs.\n\n<div>\n  <code>delete:application_logout_uris</code>\n</div>"
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      - name: urls
+        in: query
+        required: true
+        description: Urls to delete, comma separated and url encoded.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Environments API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Environments
+paths:
+  /api/v1/environment:
+    get:
+      tags:
+      - Environments
+      summary: Get environment
+      operationId: getEnvironment
+      description: "Gets the current environment.\n\n<div>\n  <code>read:environments</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/environment/feature_flags:
+    get:
+      tags:
+      - Environments
+      summary: List Environment Feature Flags
+      operationId: GetEnvironementFeatureFlags
+      description: "Get environment feature flags.\n\n<div>\n  <code>read:environment_feature_flags</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Environments
+      summary: Delete Environment Feature Flag Overrides
+      operationId: DeleteEnvironementFeatureFlagOverrides
+      description: "Delete all environment feature flag overrides.\n\n<div>\n  <code>delete:environment_feature_flags</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/environment/feature_flags/{feature_flag_key}:
+    patch:
+      tags:
+      - Environments
+      summary: Update Environment Feature Flag Override
+      operationId: UpdateEnvironementFeatureFlagOverride
+      description: "Update environment feature flag override.\n\n<div>\n  <code>update:environment_feature_flags</code>\n</div>"
+      parameters:
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The identifier for the feature flag.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Environments
+      summary: Delete Environment Feature Flag Override
+      operationId: DeleteEnvironementFeatureFlagOverride
+      description: "Delete environment feature flag override.\n\n<div>\n  <code>delete:environment_feature_flags</code>\n</div>"
+      parameters:
+      - name: feature_flag_key
+        in: path
+        required: true
+        description: The identifier for the feature flag.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/environment/logos:
+    get:
+      tags:
+      - Environments
+      summary: Read logo details
+      operationId: ReadLogo
+      description: "Read environment logo details\n\n<div>\n  <code>read:environments</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/environment/logos/{type}:
+    put:
+      tags:
+      - Environments
+      summary: Add logo
+      operationId: AddLogo
+      description: "Add environment logo\n\n<div>\n  <code>update:environments</code>\n</div>"
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: The type of logo to add.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Environments
+      summary: Delete logo
+      operationId: DeleteLogo
+      description: "Delete environment logo\n\n<div>\n  <code>update:environments</code>\n</div>"
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: The type of logo to delete.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/passkey:
+    get:
+      tags:
+      - Environments
+      summary: Get environment passkey settings
+      operationId: GetPasskey
+      description: "Retrieve passkey policy for the current environment.\n\n<div>\n  <code>read:passkey</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    put:
+      tags:
+      - Environments
+      summary: Update environment passkey settings
+      operationId: UpdatePasskey
+      description: "Set the passkey policy for the current environment. Policies other than `off` require the `passkeys` entitlement.\n\n<div>\n  <code>update:passkey</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

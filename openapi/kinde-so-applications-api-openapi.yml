@@ -1,0 +1,299 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Applications API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Applications
+paths:
+  /api/v1/applications:
+    get:
+      tags:
+      - Applications
+      summary: Get applications
+      operationId: getApplications
+      description: "Get a list of applications / clients.\n\n<div>\n  <code>read:applications</code>\n</div>"
+      parameters:
+      - name: sort
+        in: query
+        description: Field and order to sort the result by.
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: next_token
+        in: query
+        description: A string to get the next page of results if there are more results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Applications
+      summary: Create application
+      operationId: createApplication
+      description: "Create a new client.\n\n<div>\n  <code>create:applications</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{application_id}:
+    get:
+      tags:
+      - Applications
+      summary: Get application
+      operationId: getApplication
+      description: "Gets an application given the application's ID.\n\n<div>\n  <code>read:applications</code>\n</div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Applications
+      summary: Update Application
+      operationId: updateApplication
+      description: "Updates a client's settings. For more information, read [Applications in Kinde](https://docs.kinde.com/build/applications/about-applications)\n\n<div>\n  <code>update:applications</code>\n</div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Applications
+      summary: Delete application
+      operationId: deleteApplication
+      description: "Delete a client / application.\n\n<div>\n  <code>delete:applications</code>\n</div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{application_id}/connections:
+    get:
+      tags:
+      - Applications
+      summary: Get connections
+      operationId: GetApplicationConnections
+      description: "Gets all connections for an application.\n\n<div>\n  <code>read:application_connections</code>\n</div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier/client ID for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{application_id}/connections/{connection_id}:
+    post:
+      tags:
+      - Applications
+      summary: Enable connection
+      operationId: EnableConnection
+      description: "Enable an auth connection for an application.\n\n<div>\n  <code>create:application_connections</code>\n</div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier/client ID for the application.
+        schema:
+          type: string
+      - name: connection_id
+        in: path
+        required: true
+        description: The identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Applications
+      summary: Remove connection
+      operationId: RemoveConnection
+      description: "Turn off an auth connection for an application\n\n<div>\n  <code>delete:application_connections</code>\n</div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier/client ID for the application.
+        schema:
+          type: string
+      - name: connection_id
+        in: path
+        required: true
+        description: The identifier for the connection.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{application_id}/properties:
+    get:
+      tags:
+      - Applications
+      summary: Get property values
+      operationId: getApplicationPropertyValues
+      description: "Gets properties for an application by client ID.\n\n<div>\n  <code>read:application_properties</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{application_id}/properties/{property_key}:
+    put:
+      tags:
+      - Applications
+      summary: Update property
+      operationId: updateApplicationsProperty
+      description: "Update application property value.\n\n<div>\n  <code>update:application_properties</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/applications/{application_id}/tokens:
+    patch:
+      tags:
+      - Applications
+      summary: Update application tokens
+      operationId: updateApplicationTokens
+      description: "Configure tokens for an application.\n  <div>\n    <code>update:application_tokens</code>\n  </div>"
+      parameters:
+      - name: application_id
+        in: path
+        required: true
+        description: The identifier/client ID for the application.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

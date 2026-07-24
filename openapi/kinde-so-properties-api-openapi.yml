@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Properties API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Properties
+paths:
+  /api/v1/properties:
+    get:
+      tags:
+      - Properties
+      summary: List properties
+      operationId: GetProperties
+      description: "Returns a list of properties\n\n<div>\n  <code>read:properties</code>\n</div>"
+      parameters:
+      - name: page_size
+        in: query
+        description: Number of results per page. Defaults to 10 if parameter not sent.
+        schema:
+          type: integer
+      - name: starting_after
+        in: query
+        description: The ID of the property to start after.
+        schema:
+          type: string
+      - name: ending_before
+        in: query
+        description: The ID of the property to end before.
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: Filter results by user,  organization or application context
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Properties
+      summary: Create Property
+      operationId: CreateProperty
+      description: "Create property.\n\n<div>\n  <code>create:properties</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/properties/{property_id}:
+    put:
+      tags:
+      - Properties
+      summary: Update Property
+      operationId: UpdateProperty
+      description: "Update property.\n\n<div>\n  <code>update:properties</code>\n</div>"
+      parameters:
+      - name: property_id
+        in: path
+        required: true
+        description: The unique identifier for the property.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Properties
+      summary: Delete Property
+      operationId: DeleteProperty
+      description: "Delete property.\n\n<div>\n  <code>delete:properties</code>\n</div>"
+      parameters:
+      - name: property_id
+        in: path
+        required: true
+        description: The unique identifier for the property.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

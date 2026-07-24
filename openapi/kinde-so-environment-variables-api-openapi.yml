@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: Kinde Management API Keys Environment variables API
+  version: '1'
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  contact:
+    name: Kinde Support Team
+    email: support@kinde.com
+    url: https://docs.kinde.com
+  termsOfService: https://docs.kinde.com/trust-center/agreements/terms-of-service/
+servers:
+- url: https://{subdomain}.kinde.com
+  variables:
+    subdomain:
+      default: your_kinde_subdomain
+      description: The subdomain generated for your business on Kinde.
+security:
+- kindeBearerAuth: []
+tags:
+- name: Environment variables
+paths:
+  /api/v1/environment_variables:
+    get:
+      tags:
+      - Environment variables
+      summary: Get environment variables
+      operationId: getEnvironmentVariables
+      description: "Get environment variables. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>read:environment_variables</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    post:
+      tags:
+      - Environment variables
+      summary: Create environment variable
+      operationId: createEnvironmentVariable
+      description: "Create a new environment variable. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>create:environment_variables</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+  /api/v1/environment_variables/{variable_id}:
+    get:
+      tags:
+      - Environment variables
+      summary: Get environment variable
+      operationId: getEnvironmentVariable
+      description: "Retrieve environment variable details by ID. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>read:environment_variables</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    patch:
+      tags:
+      - Environment variables
+      summary: Update environment variable
+      operationId: updateEnvironmentVariable
+      description: "Update an environment variable you previously created. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>update:environment_variables</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+    delete:
+      tags:
+      - Environment variables
+      summary: Delete environment variable
+      operationId: deleteEnvironmentVariable
+      description: "Delete an environment variable you previously created. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>delete:environment_variables</code>\n</div>"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests - rate limited
+      security:
+      - kindeBearerAuth: []
+components:
+  securitySchemes:
+    kindeBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Requires an access token obtained using the OAuth2 client_credentials flow from an authorized M2M application.

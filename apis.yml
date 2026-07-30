@@ -12,7 +12,20 @@ description: Kinde is an authentication and user management platform for SaaS an
   Kinde admin UI - users, organizations, roles, permissions, feature flags,
   applications, connections, APIs and scopes, subscribers, properties, webhooks,
   and billing - is available through the API.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/kinde-so.png
 tags:
 - Authentication
 - User Management
@@ -24,280 +37,1140 @@ created: '2026-07-02'
 modified: '2026-07-02'
 specificationVersion: '0.19'
 apis:
-- aid: kinde-so:kinde-so-users-api
-  name: Kinde Users API
-  tags:
-  - Users
-  - Identities
-  - Sessions
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: kinde-so:kinde-so-api-keys-api
+  name: Kinde API Keys API
+  description: The API Keys API from Kinde — 3 operation(s) for api keys.
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/
-    type: Documentation
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/users
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Create, list, get, update, and delete users, plus manage their
-    identities, sessions, passwords, MFA factors, per-user properties, and
-    feature-flag overrides. Includes user search and refresh-claims.
-- aid: kinde-so:kinde-so-organizations-api
-  name: Kinde Organizations API
   tags:
-  - Organizations
-  - B2B
-  - Multi-Tenancy
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/organizations
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  - API Keys
   properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Manage organizations (tenants) and their membership - create and
-    update orgs, add and remove users, assign org-scoped roles, permissions, and
-    feature flags, manage invites, connections, properties, logos, passkeys, MFA,
-    and sessions for each organization.
-- aid: kinde-so:kinde-so-roles-api
-  name: Kinde Roles API
-  tags:
-  - Roles
-  - RBAC
-  - Authorization
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: OpenAPI
+    url: openapi/kinde-so-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-apis-api
+  name: Kinde APIs API
+  description: The APIs API from Kinde — 6 operation(s) for apis.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/roles
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Define role-based access control - create, list, update, and delete
-    roles, and attach permissions, API scopes, and users to each role.
-- aid: kinde-so:kinde-so-permissions-api
-  name: Kinde Permissions API
-  tags:
-  - Permissions
-  - Authorization
-  - RBAC
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/permissions
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Create, list, update, and delete the granular permissions that are
-    grouped into roles and enforced across your applications and APIs.
-- aid: kinde-so:kinde-so-feature-flags-api
-  name: Kinde Feature Flags API
-  tags:
-  - Feature Flags
-  - Rollouts
-  - Configuration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Create and delete feature flags and set their values at the
-    environment, organization, and individual-user levels for progressive
-    rollouts and per-tenant configuration.
-- aid: kinde-so:kinde-so-applications-api
-  name: Kinde Applications API
-  tags:
-  - Applications
-  - OAuth Clients
-  - Callbacks
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/applications
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/applications
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Manage the OAuth applications (clients) registered in your business -
-    create, get, update, and delete apps, wire up their connections and
-    properties, configure token customization, and manage authorized redirect and
-    logout callback URLs.
-- aid: kinde-so:kinde-so-connections-api
-  name: Kinde Connections API
-  tags:
-  - Connections
-  - SSO
-  - Directories
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/connections
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/connections
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Manage authentication connections - social and enterprise SSO
-    identity providers, connected third-party apps (OAuth token exchange), and
-    SCIM directories used to provision users into your organizations.
-- aid: kinde-so:kinde-so-apis-scopes-api
-  name: Kinde APIs and Scopes API
   tags:
   - APIs
-  - Scopes
-  - API Keys
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/apis
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
   properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/apis
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Register the APIs your applications protect, define and assign their
-    scopes, authorize applications against them, and issue and verify API keys for
-    machine-to-machine access.
-- aid: kinde-so:kinde-so-subscribers-api
-  name: Kinde Subscribers API
+  - type: OpenAPI
+    url: openapi/kinde-so-apis-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-applications-api
+  name: Kinde Applications API
+  description: The Applications API from Kinde — 7 operation(s) for applications.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
-  - Subscribers
-  - Marketing
-  - Contacts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  - Applications
   properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: List, get, and create subscribers - the marketing contacts captured
-    by your Kinde business, distinct from authenticated users.
+  - type: OpenAPI
+    url: openapi/kinde-so-applications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-billing-agreements-api
+  name: Kinde Billing Agreements API
+  description: The Billing Agreements API from Kinde — 1 operation(s) for billing agreements.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Billing Agreements
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-billing-agreements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-billing-entitlements-api
+  name: Kinde Billing Entitlements API
+  description: The Billing Entitlements API from Kinde — 1 operation(s) for billing entitlements.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Billing Entitlements
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-billing-entitlements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-billing-meter-usage-api
+  name: Kinde Billing Meter Usage API
+  description: The Billing Meter Usage API from Kinde — 1 operation(s) for billing meter usage.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Billing Meter Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-billing-meter-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
 - aid: kinde-so:kinde-so-business-api
   name: Kinde Business API
+  description: The Business API from Kinde — 1 operation(s) for business.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
   - Business
-  - Environment
-  - Reference Data
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/business
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
   properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/business
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Read and update business-level settings and environment
-    configuration (logos, feature flags, environment variables, passkey policy),
-    plus reference data endpoints for industries and timezones.
+  - type: OpenAPI
+    url: openapi/kinde-so-business-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-callbacks-api
+  name: Kinde Callbacks API
+  description: The Callbacks API from Kinde — 2 operation(s) for callbacks.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Callbacks
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-callbacks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-connected-apps-api
+  name: Kinde Connected Apps API
+  description: The Connected Apps API from Kinde — 3 operation(s) for connected apps.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Connected Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-connected-apps-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-connections-api
+  name: Kinde Connections API
+  description: The Connections API from Kinde — 2 operation(s) for connections.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-connections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-directories-api
+  name: Kinde Directories API
+  description: The Directories API from Kinde — 2 operation(s) for directories.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Directories
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-directories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-environment-variables-api
+  name: Kinde Environment variables API
+  description: The Environment variables API from Kinde — 2 operation(s) for environment variables.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Environment variables
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-environment-variables-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-environments-api
+  name: Kinde Environments API
+  description: The Environments API from Kinde — 6 operation(s) for environments.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-environments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-feature-flags-api
+  name: Kinde Feature Flags API
+  description: The Feature Flags API from Kinde — 2 operation(s) for feature flags.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Feature Flags
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-feature-flags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-identities-api
+  name: Kinde Identities API
+  description: The Identities API from Kinde — 1 operation(s) for identities.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Identities
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-identities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-industries-api
+  name: Kinde Industries API
+  description: The Industries API from Kinde — 1 operation(s) for industries.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Industries
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-industries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-mfa-api
+  name: Kinde MFA API
+  description: The MFA API from Kinde — 1 operation(s) for mfa.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - MFA
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-mfa-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-organizations-api
+  name: Kinde Organizations API
+  description: The Organizations API from Kinde — 27 operation(s) for organizations.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-permissions-api
+  name: Kinde Permissions API
+  description: The Permissions API from Kinde — 2 operation(s) for permissions.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
 - aid: kinde-so:kinde-so-properties-api
   name: Kinde Properties API
+  description: The Properties API from Kinde — 2 operation(s) for properties.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
   - Properties
-  - Metadata
-  - Custom Data
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/properties
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
   properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/properties
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Define custom properties and property categories used to attach
-    structured metadata to users, organizations, and applications, and surface it
-    in tokens.
+  - type: OpenAPI
+    url: openapi/kinde-so-properties-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-property-categories-api
+  name: Kinde Property Categories API
+  description: The Property Categories API from Kinde — 2 operation(s) for property categories.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Property Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-property-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-roles-api
+  name: Kinde Roles API
+  description: The Roles API from Kinde — 7 operation(s) for roles.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-roles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-search-api
+  name: Kinde Search API
+  description: The Search API from Kinde — 1 operation(s) for search.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-subscribers-api
+  name: Kinde Subscribers API
+  description: The Subscribers API from Kinde — 2 operation(s) for subscribers.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Subscribers
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-subscribers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-timezones-api
+  name: Kinde Timezones API
+  description: The Timezones API from Kinde — 1 operation(s) for timezones.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Timezones
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-timezones-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-users-api
+  name: Kinde Users API
+  description: The Users API from Kinde — 11 operation(s) for users.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
 - aid: kinde-so:kinde-so-webhooks-api
   name: Kinde Webhooks API
+  description: The Webhooks API from Kinde — 4 operation(s) for webhooks.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
   - Webhooks
-  - Events
-  - Eventing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
   properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Create, list, update, and delete webhook endpoints that receive
-    Kinde events (user, organization, and other lifecycle events), enumerate the
-    available event types, and retrieve individual delivered events.
-- aid: kinde-so:kinde-so-billing-api
-  name: Kinde Billing API
-  tags:
-  - Billing
-  - Entitlements
-  - Metering
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
-  properties:
-  - url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
-    type: APIReference
-  - url: openapi/kinde-so-openapi.yml
-    type: OpenAPI
-  - url: collections/kinde-so.postman_collection.json
-    type: PostmanCollection
-  - url: collections/kinde-so.opencollection.json
-    type: OpenCollection
-  description: Kinde's own usage-based billing product - read customer
-    entitlements, create and list billing agreements, and record metered usage for
-    plan-gated features.
+  - type: OpenAPI
+    url: openapi/kinde-so-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
 common:
 - type: AgenticAccess
   url: agentic-access/kinde-so-agentic-access.yml

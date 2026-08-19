@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kinde Management API Keys Applications API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications",
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field and order to sort the result by."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page. Defaults to 10 if parameter not sent."
+              },
+              {
+                "name": "next_token",
+                "value": "",
+                "type": "query",
+                "description": "A string to get the next page of results if there are more results."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of applications / clients.\n\n<div>\n  <code>read:applications</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Create application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new client.\n\n<div>\n  <code>create:applications</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Get application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the application."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets an application given the application's ID.\n\n<div>\n  <code>read:applications</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the application."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a client's settings. For more information, read [Applications in Kinde](https://docs.kinde.com/build/applications/about-applications)\n\n<div>\n  <code>update:applications</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Delete application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the application."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a client / application.\n\n<div>\n  <code>delete:applications</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Get connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id/connections",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier/client ID for the application."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets all connections for an application.\n\n<div>\n  <code>read:application_connections</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Enable connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id/connections/:connection_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier/client ID for the application."
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the connection."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Enable an auth connection for an application.\n\n<div>\n  <code>create:application_connections</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Remove connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id/connections/:connection_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier/client ID for the application."
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the connection."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Turn off an auth connection for an application\n\n<div>\n  <code>delete:application_connections</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Get property values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id/properties",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets properties for an application by client ID.\n\n<div>\n  <code>read:application_properties</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Update property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id/properties/:property_key",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update application property value.\n\n<div>\n  <code>update:application_properties</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Update application tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{subdomain}.kinde.com/api/v1/applications/:application_id/tokens",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier/client ID for the application."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Configure tokens for an application.\n  <div>\n    <code>update:application_tokens</code>\n  </div>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

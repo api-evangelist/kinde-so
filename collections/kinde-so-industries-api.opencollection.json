@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kinde Management API Keys Industries API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Industries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get industries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/industries",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of industries and associated industry keys.\n\n<div>\n  <code>read:industries</code>\n</div>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

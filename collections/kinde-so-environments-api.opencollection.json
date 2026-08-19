@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kinde Management API Keys Environments API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the current environment.\n\n<div>\n  <code>read:environments</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "List Environment Feature Flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/feature_flags",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get environment feature flags.\n\n<div>\n  <code>read:environment_feature_flags</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Delete Environment Feature Flag Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/feature_flags",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete all environment feature flag overrides.\n\n<div>\n  <code>delete:environment_feature_flags</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Update Environment Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/feature_flags/:feature_flag_key",
+            "params": [
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the feature flag."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update environment feature flag override.\n\n<div>\n  <code>update:environment_feature_flags</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Delete Environment Feature Flag Override",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/feature_flags/:feature_flag_key",
+            "params": [
+              {
+                "name": "feature_flag_key",
+                "value": "",
+                "type": "path",
+                "description": "The identifier for the feature flag."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete environment feature flag override.\n\n<div>\n  <code>delete:environment_feature_flags</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Read logo details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/logos",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Read environment logo details\n\n<div>\n  <code>read:environments</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Add logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/logos/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of logo to add."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add environment logo\n\n<div>\n  <code>update:environments</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Delete logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.kinde.com/api/v1/environment/logos/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of logo to delete."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete environment logo\n\n<div>\n  <code>update:environments</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Get environment passkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.kinde.com/api/v1/passkey",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve passkey policy for the current environment.\n\n<div>\n  <code>read:passkey</code>\n</div>"
+        },
+        {
+          "info": {
+            "name": "Update environment passkey settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.kinde.com/api/v1/passkey",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set the passkey policy for the current environment. Policies other than `off` require the `passkeys` entitlement.\n\n<div>\n  <code>update:passkey</code>\n</div>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

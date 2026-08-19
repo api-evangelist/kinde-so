@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kinde Management API Keys Billing Meter Usage API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Meter Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create meter usage record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.kinde.com/api/v1/billing/meter_usage",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new meter usage record\n\n<div>\n  <code>create:meter_usage</code>\n</div>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

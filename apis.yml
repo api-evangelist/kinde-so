@@ -31,6 +31,13 @@ tags:
 - User Management
 - Identity
 - Authorization
+- Software-as-a-Service
+- CIAM
+tags_raw:
+- Authentication
+- User Management
+- Identity
+- Authorization
 - SaaS
 - CIAM
 created: '2026-07-02'
@@ -43,6 +50,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -84,7 +93,8 @@ apis:
   description: The APIs API from Kinde — 6 operation(s) for apis.
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - APIs
   properties:
   - type: OpenAPI
@@ -127,6 +137,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -505,6 +517,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - Environment Variables
+  tags_raw:
   - Environment variables
   properties:
   - type: OpenAPI
@@ -757,6 +771,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -1093,6 +1109,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -1135,6 +1153,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI

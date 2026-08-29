@@ -12,6 +12,18 @@ description: Kinde is an authentication and user management platform for SaaS an
   Kinde admin UI - users, organizations, roles, permissions, feature flags,
   applications, connections, APIs and scopes, subscribers, properties, webhooks,
   and billing - is available through the API.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve

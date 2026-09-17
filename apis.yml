@@ -101,49 +101,6 @@ apis:
     url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
   - type: APIReference
     url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
-- aid: kinde-so:kinde-so-apis-api
-  name: Kinde APIs API
-  description: The APIs API from Kinde — 6 operation(s) for apis.
-  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
-  baseURL: https://{yourbusiness}.kinde.com/api/v1
-  tags: []
-  tags_raw:
-  - APIs
-  properties:
-  - type: OpenAPI
-    url: openapi/kinde-so-apis-api-openapi.yml
-  - type: Documentation
-    url: https://docs.kinde.com/kinde-apis/management/
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/users
-  - type: PostmanCollection
-    url: collections/kinde-so.postman_collection.json
-  - type: OpenCollection
-    url: collections/kinde-so.opencollection.json
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/business
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
-  - type: APIReference
-    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
 - aid: kinde-so:kinde-so-applications-api
   name: Kinde Applications API
   description: The Applications API from Kinde — 7 operation(s) for applications.
@@ -1172,6 +1129,48 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kinde-so-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kinde.com/kinde-apis/management/
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/users
+  - type: PostmanCollection
+    url: collections/kinde-so.postman_collection.json
+  - type: OpenCollection
+    url: collections/kinde-so.opencollection.json
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/organizations
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/roles
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/permissions
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/feature-flags
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/applications
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/connections
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/apis
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/subscribers
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/business
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/properties
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/webhooks
+  - type: APIReference
+    url: https://docs.kinde.com/kinde-apis/management/#tag/billing-entitlements
+- aid: kinde-so:kinde-so-apis-api
+  name: Kinde AP Is API
+  description: The APIs API from Kinde — 6 operation(s) for apis.
+  humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
+  baseURL: https://{yourbusiness}.kinde.com/api/v1
+  tags:
+  - APIs
+  properties:
+  - type: OpenAPI
+    url: openapi/kinde-so-apis-api-openapi.yml
   - type: Documentation
     url: https://docs.kinde.com/kinde-apis/management/
   - type: APIReference

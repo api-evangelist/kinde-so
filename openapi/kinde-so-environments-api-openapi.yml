@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Environments API
+  title: Kinde Management Environments API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Environments
       summary: Get environment
       operationId: getEnvironment
-      description: "Gets the current environment.\n\n<div>\n  <code>read:environments</code>\n</div>"
+      description: 'Gets the current environment.
+
+
+        read:environments'
       responses:
         '200':
           description: OK
@@ -43,7 +46,10 @@ paths:
       - Environments
       summary: List Environment Feature Flags
       operationId: GetEnvironementFeatureFlags
-      description: "Get environment feature flags.\n\n<div>\n  <code>read:environment_feature_flags</code>\n</div>"
+      description: 'Get environment feature flags.
+
+
+        read:environment_feature_flags'
       responses:
         '200':
           description: OK
@@ -60,7 +66,10 @@ paths:
       - Environments
       summary: Delete Environment Feature Flag Overrides
       operationId: DeleteEnvironementFeatureFlagOverrides
-      description: "Delete all environment feature flag overrides.\n\n<div>\n  <code>delete:environment_feature_flags</code>\n</div>"
+      description: 'Delete all environment feature flag overrides.
+
+
+        delete:environment_feature_flags'
       responses:
         '200':
           description: OK
@@ -78,7 +87,10 @@ paths:
       - Environments
       summary: Update Environment Feature Flag Override
       operationId: UpdateEnvironementFeatureFlagOverride
-      description: "Update environment feature flag override.\n\n<div>\n  <code>update:environment_feature_flags</code>\n</div>"
+      description: 'Update environment feature flag override.
+
+
+        update:environment_feature_flags'
       parameters:
       - name: feature_flag_key
         in: path
@@ -102,7 +114,10 @@ paths:
       - Environments
       summary: Delete Environment Feature Flag Override
       operationId: DeleteEnvironementFeatureFlagOverride
-      description: "Delete environment feature flag override.\n\n<div>\n  <code>delete:environment_feature_flags</code>\n</div>"
+      description: 'Delete environment feature flag override.
+
+
+        delete:environment_feature_flags'
       parameters:
       - name: feature_flag_key
         in: path
@@ -127,7 +142,10 @@ paths:
       - Environments
       summary: Read logo details
       operationId: ReadLogo
-      description: "Read environment logo details\n\n<div>\n  <code>read:environments</code>\n</div>"
+      description: 'Read environment logo details
+
+
+        read:environments'
       responses:
         '200':
           description: OK
@@ -145,7 +163,10 @@ paths:
       - Environments
       summary: Add logo
       operationId: AddLogo
-      description: "Add environment logo\n\n<div>\n  <code>update:environments</code>\n</div>"
+      description: 'Add environment logo
+
+
+        update:environments'
       parameters:
       - name: type
         in: path
@@ -169,7 +190,10 @@ paths:
       - Environments
       summary: Delete logo
       operationId: DeleteLogo
-      description: "Delete environment logo\n\n<div>\n  <code>update:environments</code>\n</div>"
+      description: 'Delete environment logo
+
+
+        update:environments'
       parameters:
       - name: type
         in: path
@@ -194,7 +218,10 @@ paths:
       - Environments
       summary: Get environment passkey settings
       operationId: GetPasskey
-      description: "Retrieve passkey policy for the current environment.\n\n<div>\n  <code>read:passkey</code>\n</div>"
+      description: 'Retrieve passkey policy for the current environment.
+
+
+        read:passkey'
       responses:
         '200':
           description: OK
@@ -211,7 +238,10 @@ paths:
       - Environments
       summary: Update environment passkey settings
       operationId: UpdatePasskey
-      description: "Set the passkey policy for the current environment. Policies other than `off` require the `passkeys` entitlement.\n\n<div>\n  <code>update:passkey</code>\n</div>"
+      description: 'Set the passkey policy for the current environment. Policies other than `off` require the `passkeys` entitlement.
+
+
+        update:passkey'
       responses:
         '200':
           description: OK

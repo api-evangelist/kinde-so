@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Directories API
+  title: Kinde Management Directories API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Directories
       summary: Get SCIM directories
       operationId: getDirectories
-      description: "Returns a list of SCIM directories for your organization.\n\n<div>\n  <code>read:scim_directories</code>\n</div>"
+      description: 'Returns a list of SCIM directories for your organization.
+
+
+        read:scim_directories'
       parameters:
       - name: page_size
         in: query
@@ -58,7 +61,10 @@ paths:
       - Directories
       summary: Create SCIM directory
       operationId: createDirectory
-      description: "Create a new SCIM directory for user and group synchronization.\n\n<div>\n  <code>create:scim_directories</code>\n</div>"
+      description: 'Create a new SCIM directory for user and group synchronization.
+
+
+        create:scim_directories'
       responses:
         '200':
           description: OK
@@ -82,7 +88,10 @@ paths:
       - Directories
       summary: Get SCIM directory
       operationId: getDirectory
-      description: "Retrieve SCIM directory details by ID.\n\n<div>\n  <code>read:scim_directories</code>\n</div>"
+      description: 'Retrieve SCIM directory details by ID.
+
+
+        read:scim_directories'
       responses:
         '200':
           description: OK
@@ -99,7 +108,10 @@ paths:
       - Directories
       summary: Update SCIM directory
       operationId: updateDirectory
-      description: "Update SCIM directory configuration.\n\n<div>\n  <code>update:scim_directories</code>\n</div>"
+      description: 'Update SCIM directory configuration.
+
+
+        update:scim_directories'
       responses:
         '200':
           description: OK
@@ -116,7 +128,10 @@ paths:
       - Directories
       summary: Delete SCIM directory
       operationId: deleteDirectory
-      description: "Delete a SCIM directory and all associated data.\n\n<div>\n  <code>delete:scim_directories</code>\n</div>"
+      description: 'Delete a SCIM directory and all associated data.
+
+
+        delete:scim_directories'
       responses:
         '200':
           description: OK

@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Identities API
+  title: Kinde Management Identities API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Identities
       summary: Get identity
       operationId: GetIdentity
-      description: "Returns an identity by ID\n\n<div>\n  <code>read:identities</code>\n</div>"
+      description: 'Returns an identity by ID
+
+
+        read:identities'
       parameters:
       - name: identity_id
         in: path
@@ -49,7 +52,10 @@ paths:
       - Identities
       summary: Update identity
       operationId: UpdateIdentity
-      description: "Update identity by ID.\n\n<div>\n  <code>update:identities</code>\n</div>"
+      description: 'Update identity by ID.
+
+
+        update:identities'
       parameters:
       - name: identity_id
         in: path
@@ -73,7 +79,10 @@ paths:
       - Identities
       summary: Delete identity
       operationId: DeleteIdentity
-      description: "Delete identity by ID.\n\n<div>\n  <code>delete:identities</code>\n</div>"
+      description: 'Delete identity by ID.
+
+
+        delete:identities'
       parameters:
       - name: identity_id
         in: path

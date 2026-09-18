@@ -531,6 +531,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -1037,6 +1039,8 @@ apis:
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
   tags:
+  - Timezone
+  tags_raw:
   - Timezones
   properties:
   - type: OpenAPI
@@ -1166,7 +1170,8 @@ apis:
   description: The APIs API from Kinde — 6 operation(s) for apis.
   humanURL: https://docs.kinde.com/kinde-apis/management/#tag/users
   baseURL: https://{yourbusiness}.kinde.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - APIs
   properties:
   - type: OpenAPI

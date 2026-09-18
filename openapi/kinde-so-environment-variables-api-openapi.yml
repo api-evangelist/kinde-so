@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Environment variables API
+  title: Kinde Management Environment variables API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -17,15 +17,18 @@ servers:
 security:
 - kindeBearerAuth: []
 tags:
-- name: Environment variables
+- name: Environment Variables
 paths:
   /api/v1/environment_variables:
     get:
       tags:
-      - Environment variables
+      - Environment Variables
       summary: Get environment variables
       operationId: getEnvironmentVariables
-      description: "Get environment variables. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>read:environment_variables</code>\n</div>"
+      description: 'Get environment variables. This feature is in beta and admin UI is not yet available.
+
+
+        read:environment_variables'
       responses:
         '200':
           description: OK
@@ -39,10 +42,13 @@ paths:
       - kindeBearerAuth: []
     post:
       tags:
-      - Environment variables
+      - Environment Variables
       summary: Create environment variable
       operationId: createEnvironmentVariable
-      description: "Create a new environment variable. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>create:environment_variables</code>\n</div>"
+      description: 'Create a new environment variable. This feature is in beta and admin UI is not yet available.
+
+
+        create:environment_variables'
       responses:
         '200':
           description: OK
@@ -57,10 +63,13 @@ paths:
   /api/v1/environment_variables/{variable_id}:
     get:
       tags:
-      - Environment variables
+      - Environment Variables
       summary: Get environment variable
       operationId: getEnvironmentVariable
-      description: "Retrieve environment variable details by ID. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>read:environment_variables</code>\n</div>"
+      description: 'Retrieve environment variable details by ID. This feature is in beta and admin UI is not yet available.
+
+
+        read:environment_variables'
       responses:
         '200':
           description: OK
@@ -74,10 +83,13 @@ paths:
       - kindeBearerAuth: []
     patch:
       tags:
-      - Environment variables
+      - Environment Variables
       summary: Update environment variable
       operationId: updateEnvironmentVariable
-      description: "Update an environment variable you previously created. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>update:environment_variables</code>\n</div>"
+      description: 'Update an environment variable you previously created. This feature is in beta and admin UI is not yet available.
+
+
+        update:environment_variables'
       responses:
         '200':
           description: OK
@@ -91,10 +103,13 @@ paths:
       - kindeBearerAuth: []
     delete:
       tags:
-      - Environment variables
+      - Environment Variables
       summary: Delete environment variable
       operationId: deleteEnvironmentVariable
-      description: "Delete an environment variable you previously created. This feature is in beta and admin UI is not yet available.\n\n<div>\n  <code>delete:environment_variables</code>\n</div>"
+      description: 'Delete an environment variable you previously created. This feature is in beta and admin UI is not yet available.
+
+
+        delete:environment_variables'
       responses:
         '200':
           description: OK

@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Billing Agreements API
+  title: Kinde Management Billing Agreements API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Billing Agreements
       summary: Get billing agreements
       operationId: getBillingAgreements
-      description: "Returns all the agreements a billing customer currently has access to\n\n<div>\n  <code>read:billing_agreements</code>\n</div>"
+      description: 'Returns all the agreements a billing customer currently has access to
+
+
+        read:billing_agreements'
       parameters:
       - name: page_size
         in: query
@@ -69,7 +72,10 @@ paths:
       - Billing Agreements
       summary: Create billing agreement
       operationId: createBillingAgreement
-      description: "Creates a new billing agreement based on the plan code passed, and cancels the customer's existing agreements\n\n<div>\n  <code>create:billing_agreements</code>\n</div>"
+      description: 'Creates a new billing agreement based on the plan code passed, and cancels the customer''s existing agreements
+
+
+        create:billing_agreements'
       responses:
         '200':
           description: OK

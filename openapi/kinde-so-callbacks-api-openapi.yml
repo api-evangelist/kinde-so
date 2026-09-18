@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Callbacks API
+  title: Kinde Management Callbacks API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Callbacks
       summary: List Callback URLs
       operationId: getCallbackURLs
-      description: "Returns an application's redirect callback URLs.\n\n<div>\n  <code>read:applications_redirect_uris</code>\n</div>"
+      description: 'Returns an application''s redirect callback URLs.
+
+
+        read:applications_redirect_uris'
       parameters:
       - name: app_id
         in: path
@@ -49,7 +52,10 @@ paths:
       - Callbacks
       summary: Add Redirect Callback URLs
       operationId: addRedirectCallbackURLs
-      description: "Add additional redirect callback URLs.\n\n<div>\n  <code>create:applications_redirect_uris</code>\n</div>"
+      description: 'Add additional redirect callback URLs.
+
+
+        create:applications_redirect_uris'
       parameters:
       - name: app_id
         in: path
@@ -73,7 +79,10 @@ paths:
       - Callbacks
       summary: Replace Redirect Callback URLs
       operationId: replaceRedirectCallbackURLs
-      description: "Replace all redirect callback URLs.\n\n<div>\n  <code>update:applications_redirect_uris</code>\n</div>"
+      description: 'Replace all redirect callback URLs.
+
+
+        update:applications_redirect_uris'
       parameters:
       - name: app_id
         in: path
@@ -97,7 +106,10 @@ paths:
       - Callbacks
       summary: Delete Callback URLs
       operationId: deleteCallbackURLs
-      description: "Delete callback URLs.\n\n<div>\n  <code>delete:applications_redirect_uris</code>\n</div>"
+      description: 'Delete callback URLs.
+
+
+        delete:applications_redirect_uris'
       parameters:
       - name: app_id
         in: path
@@ -128,7 +140,10 @@ paths:
       - Callbacks
       summary: List logout URLs
       operationId: getLogoutURLs
-      description: "Returns an application's logout redirect URLs.\n\n<div>\n  <code>read:application_logout_uris</code>\n</div>"
+      description: 'Returns an application''s logout redirect URLs.
+
+
+        read:application_logout_uris'
       parameters:
       - name: app_id
         in: path
@@ -152,7 +167,10 @@ paths:
       - Callbacks
       summary: Add logout redirect URLs
       operationId: addLogoutRedirectURLs
-      description: "Add additional logout redirect URLs.\n\n<div>\n  <code>create:application_logout_uris</code>\n</div>"
+      description: 'Add additional logout redirect URLs.
+
+
+        create:application_logout_uris'
       parameters:
       - name: app_id
         in: path
@@ -176,7 +194,10 @@ paths:
       - Callbacks
       summary: Replace logout redirect URls
       operationId: replaceLogoutRedirectURLs
-      description: "Replace all logout redirect URLs.\n\n<div>\n  <code>update:application_logout_uris</code>\n</div>"
+      description: 'Replace all logout redirect URLs.
+
+
+        update:application_logout_uris'
       parameters:
       - name: app_id
         in: path
@@ -200,7 +221,10 @@ paths:
       - Callbacks
       summary: Delete Logout URLs
       operationId: deleteLogoutURLs
-      description: "Delete logout URLs.\n\n<div>\n  <code>delete:application_logout_uris</code>\n</div>"
+      description: 'Delete logout URLs.
+
+
+        delete:application_logout_uris'
       parameters:
       - name: app_id
         in: path

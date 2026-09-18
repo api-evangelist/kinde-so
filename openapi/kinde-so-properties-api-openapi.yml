@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Properties API
+  title: Kinde Management Properties API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Properties
       summary: List properties
       operationId: GetProperties
-      description: "Returns a list of properties\n\n<div>\n  <code>read:properties</code>\n</div>"
+      description: 'Returns a list of properties
+
+
+        read:properties'
       parameters:
       - name: page_size
         in: query
@@ -63,7 +66,10 @@ paths:
       - Properties
       summary: Create Property
       operationId: CreateProperty
-      description: "Create property.\n\n<div>\n  <code>create:properties</code>\n</div>"
+      description: 'Create property.
+
+
+        create:properties'
       responses:
         '200':
           description: OK
@@ -81,7 +87,10 @@ paths:
       - Properties
       summary: Update Property
       operationId: UpdateProperty
-      description: "Update property.\n\n<div>\n  <code>update:properties</code>\n</div>"
+      description: 'Update property.
+
+
+        update:properties'
       parameters:
       - name: property_id
         in: path
@@ -105,7 +114,10 @@ paths:
       - Properties
       summary: Delete Property
       operationId: DeleteProperty
-      description: "Delete property.\n\n<div>\n  <code>delete:properties</code>\n</div>"
+      description: 'Delete property.
+
+
+        delete:properties'
       parameters:
       - name: property_id
         in: path

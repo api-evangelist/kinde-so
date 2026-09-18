@@ -1,33 +1,7 @@
 {
   "provider": "kinde-so",
   "sources": [
-    "kinde-so-api-keys-api-openapi.yml",
-    "kinde-so-apis-api-openapi.yml",
-    "kinde-so-applications-api-openapi.yml",
-    "kinde-so-billing-agreements-api-openapi.yml",
-    "kinde-so-billing-entitlements-api-openapi.yml",
-    "kinde-so-billing-meter-usage-api-openapi.yml",
-    "kinde-so-business-api-openapi.yml",
-    "kinde-so-callbacks-api-openapi.yml",
-    "kinde-so-connected-apps-api-openapi.yml",
-    "kinde-so-connections-api-openapi.yml",
-    "kinde-so-directories-api-openapi.yml",
-    "kinde-so-environment-variables-api-openapi.yml",
-    "kinde-so-environments-api-openapi.yml",
-    "kinde-so-feature-flags-api-openapi.yml",
-    "kinde-so-identities-api-openapi.yml",
-    "kinde-so-industries-api-openapi.yml",
-    "kinde-so-mfa-api-openapi.yml",
-    "kinde-so-organizations-api-openapi.yml",
-    "kinde-so-permissions-api-openapi.yml",
-    "kinde-so-properties-api-openapi.yml",
-    "kinde-so-property-categories-api-openapi.yml",
-    "kinde-so-roles-api-openapi.yml",
-    "kinde-so-search-api-openapi.yml",
-    "kinde-so-subscribers-api-openapi.yml",
-    "kinde-so-timezones-api-openapi.yml",
-    "kinde-so-users-api-openapi.yml",
-    "kinde-so-webhooks-api-openapi.yml"
+    "_original/kinde-so-openapi.yml"
   ],
   "outputs": [
     "kinde-so-api-keys-api-openapi.yml",
@@ -58,9 +32,44 @@
     "kinde-so-users-api-openapi.yml",
     "kinde-so-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "kinde-so-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: kinde-so-ap-is-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 27 total)"
+  ],
+  "skipped": [
+    "kinde-so-ap-is-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-billing-agreements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-billing-entitlements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-billing-meter-usage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-business-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-callbacks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-connected-apps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-directories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-environment-variables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-feature-flags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-identities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-industries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-mfa-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-property-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-subscribers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-timezones-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kinde-so-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

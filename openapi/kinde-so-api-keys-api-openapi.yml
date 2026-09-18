@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Kinde Management API Keys API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - API Keys
       summary: Get API keys
       operationId: getApiKeys
-      description: "Returns a list of API keys.\n\n<div>\n  <code>read:api_keys</code>\n</div>"
+      description: 'Returns a list of API keys.
+
+
+        read:api_keys'
       parameters:
       - name: page_size
         in: query
@@ -73,7 +76,10 @@ paths:
       - API Keys
       summary: Create API key
       operationId: createApiKey
-      description: "Create a new API key.\n\n<div>\n  <code>create:api_keys</code>\n</div>"
+      description: 'Create a new API key.
+
+
+        create:api_keys'
       responses:
         '200':
           description: OK
@@ -91,7 +97,10 @@ paths:
       - API Keys
       summary: Get API key
       operationId: getApiKey
-      description: "Retrieve API key details by ID.\n\n<div>\n  <code>read:api_keys</code>\n</div>"
+      description: 'Retrieve API key details by ID.
+
+
+        read:api_keys'
       parameters:
       - name: key_id
         in: path
@@ -115,7 +124,10 @@ paths:
       - API Keys
       summary: Rotate API key
       operationId: rotateApiKey
-      description: "Rotate an API key to generate a new key while maintaining the same permissions and associations.\n\n<div>\n  <code>update:api_keys</code>\n</div>"
+      description: 'Rotate an API key to generate a new key while maintaining the same permissions and associations.
+
+
+        update:api_keys'
       parameters:
       - name: key_id
         in: path
@@ -139,7 +151,10 @@ paths:
       - API Keys
       summary: Delete API key
       operationId: deleteApiKey
-      description: "Delete an API key.\n\n<div>\n  <code>delete:api_keys</code>\n</div>"
+      description: 'Delete an API key.
+
+
+        delete:api_keys'
       parameters:
       - name: key_id
         in: path

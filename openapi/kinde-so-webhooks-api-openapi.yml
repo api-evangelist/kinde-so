@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Webhooks API
+  title: Kinde Management Webhooks API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Webhooks
       summary: Get Event
       operationId: GetEvent
-      description: "Returns an event\n\n<div>\n  <code>read:events</code>\n</div>"
+      description: 'Returns an event
+
+
+        read:events'
       parameters:
       - name: event_id
         in: path
@@ -50,7 +53,10 @@ paths:
       - Webhooks
       summary: List Event Types
       operationId: GetEventTypes
-      description: "Returns a list event type definitions\n\n<div>\n  <code>read:event_types</code>\n</div>"
+      description: 'Returns a list event type definitions
+
+
+        read:event_types'
       responses:
         '200':
           description: OK
@@ -68,7 +74,10 @@ paths:
       - Webhooks
       summary: Update a Webhook
       operationId: UpdateWebHook
-      description: "Update a webhook\n\n<div>\n  <code>update:webhooks</code>\n</div>"
+      description: 'Update a webhook
+
+
+        update:webhooks'
       parameters:
       - name: webhook_id
         in: path
@@ -92,7 +101,10 @@ paths:
       - Webhooks
       summary: Delete Webhook
       operationId: DeleteWebHook
-      description: "Delete webhook\n\n<div>\n  <code>delete:webhooks</code>\n</div>"
+      description: 'Delete webhook
+
+
+        delete:webhooks'
       parameters:
       - name: webhook_id
         in: path
@@ -117,7 +129,10 @@ paths:
       - Webhooks
       summary: List Webhooks
       operationId: GetWebHooks
-      description: "List webhooks\n\n<div>\n  <code>read:webhooks</code>\n</div>"
+      description: 'List webhooks
+
+
+        read:webhooks'
       responses:
         '200':
           description: OK
@@ -134,7 +149,10 @@ paths:
       - Webhooks
       summary: Create a Webhook
       operationId: CreateWebHook
-      description: "Create a webhook\n\n<div>\n  <code>create:webhooks</code>\n</div>"
+      description: 'Create a webhook
+
+
+        create:webhooks'
       responses:
         '200':
           description: OK

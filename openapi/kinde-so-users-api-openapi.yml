@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Users API
+  title: Kinde Management Users API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Users
       summary: Get users
       operationId: getUsers
-      description: "The returned list can be sorted by full name or email address in ascending or descending order. The number of records to return at a time can also be controlled using the `page_size` query string parameter.\n\n<div>\n  <code>read:users</code>\n</div>"
+      description: 'The returned list can be sorted by full name or email address in ascending or descending order. The number of records to return at a time can also be controlled using the `page_size` query string parameter.
+
+
+        read:users'
       parameters:
       - name: page_size
         in: query
@@ -89,7 +92,10 @@ paths:
       - Users
       summary: Refresh User Claims and Invalidate Cache
       operationId: refreshUserClaims
-      description: "Refreshes the user's claims and invalidates the current cache.\n\n<div>\n  <code>update:user_refresh_claims</code>\n</div>"
+      description: 'Refreshes the user''s claims and invalidates the current cache.
+
+
+        update:user_refresh_claims'
       parameters:
       - name: user_id
         in: path
@@ -114,7 +120,10 @@ paths:
       - Users
       summary: Get user
       operationId: getUserData
-      description: "Retrieve a user record.\n\n<div>\n  <code>read:users</code>\n</div>"
+      description: 'Retrieve a user record.
+
+
+        read:users'
       parameters:
       - name: id
         in: query
@@ -143,7 +152,12 @@ paths:
       - Users
       summary: Create user
       operationId: createUser
-      description: "Creates a user record and optionally zero or more identities for the user. An example identity could be the email\naddress of the user.\n\n<div>\n  <code>create:users</code>\n</div>"
+      description: 'Creates a user record and optionally zero or more identities for the user. An example identity could be the email
+
+        address of the user.
+
+
+        create:users'
       responses:
         '200':
           description: OK
@@ -160,7 +174,10 @@ paths:
       - Users
       summary: Update user
       operationId: updateUser
-      description: "Update a user record.\n\n<div>\n  <code>update:users</code>\n</div>"
+      description: 'Update a user record.
+
+
+        update:users'
       parameters:
       - name: id
         in: query
@@ -184,7 +201,10 @@ paths:
       - Users
       summary: Delete user
       operationId: deleteUser
-      description: "Delete a user record.\n\n<div>\n  <code>delete:users</code>\n</div>"
+      description: 'Delete a user record.
+
+
+        delete:users'
       parameters:
       - name: id
         in: query
@@ -214,7 +234,10 @@ paths:
       - Users
       summary: Update User Feature Flag Override
       operationId: UpdateUserFeatureFlagOverride
-      description: "Update user feature flag override.\n\n<div>\n  <code>update:user_feature_flags</code>\n</div>"
+      description: 'Update user feature flag override.
+
+
+        update:user_feature_flags'
       parameters:
       - name: user_id
         in: path
@@ -251,7 +274,10 @@ paths:
       - Users
       summary: Update Property value
       operationId: UpdateUserProperty
-      description: "Update property value.\n\n<div>\n  <code>update:user_properties</code>\n</div>"
+      description: 'Update property value.
+
+
+        update:user_properties'
       parameters:
       - name: user_id
         in: path
@@ -288,7 +314,10 @@ paths:
       - Users
       summary: Get property values
       operationId: GetUserPropertyValues
-      description: "Gets properties for an user by ID.\n\n<div>\n  <code>read:user_properties</code>\n</div>"
+      description: 'Gets properties for an user by ID.
+
+
+        read:user_properties'
       parameters:
       - name: user_id
         in: path
@@ -312,7 +341,10 @@ paths:
       - Users
       summary: Update Property values
       operationId: UpdateUserProperties
-      description: "Update property values.\n\n<div>\n  <code>update:user_properties</code>\n</div>"
+      description: 'Update property values.
+
+
+        update:user_properties'
       parameters:
       - name: user_id
         in: path
@@ -337,7 +369,10 @@ paths:
       - Users
       summary: Set User password
       operationId: SetUserPassword
-      description: "Set user password.\n\n<div>\n  <code>update:user_passwords</code>\n</div>"
+      description: 'Set user password.
+
+
+        update:user_passwords'
       parameters:
       - name: user_id
         in: path
@@ -362,7 +397,10 @@ paths:
       - Users
       summary: Get identities
       operationId: GetUserIdentities
-      description: "Gets a list of identities for an user by ID.\n\n<div>\n  <code>read:user_identities</code>\n</div>"
+      description: 'Gets a list of identities for an user by ID.
+
+
+        read:user_identities'
       parameters:
       - name: user_id
         in: path
@@ -396,7 +434,10 @@ paths:
       - Users
       summary: Create identity
       operationId: CreateUserIdentity
-      description: "Creates an identity for a user.\n\n<div>\n  <code>create:user_identities</code>\n</div>"
+      description: 'Creates an identity for a user.
+
+
+        create:user_identities'
       parameters:
       - name: user_id
         in: path
@@ -421,7 +462,10 @@ paths:
       - Users
       summary: Get user sessions
       operationId: GetUserSessions
-      description: "Retrieve the list of active sessions for a specific user.\n\n<div>\n  <code>read:user_sessions</code>\n</div>"
+      description: 'Retrieve the list of active sessions for a specific user.
+
+
+        read:user_sessions'
       parameters:
       - name: user_id
         in: path
@@ -445,7 +489,10 @@ paths:
       - Users
       summary: Delete user sessions
       operationId: DeleteUserSessions
-      description: "Invalidate user sessions.\n\n<div>\n  <code>delete:user_sessions</code>\n</div>"
+      description: 'Invalidate user sessions.
+
+
+        delete:user_sessions'
       parameters:
       - name: user_id
         in: path
@@ -470,7 +517,10 @@ paths:
       - Users
       summary: Get user's MFA configuration
       operationId: GetUsersMFA
-      description: "Get a user’s MFA configuration.\n\n<div>\n  <code>read:user_mfa</code>\n</div>"
+      description: 'Get a user’s MFA configuration.
+
+
+        read:user_mfa'
       parameters:
       - name: user_id
         in: path
@@ -494,7 +544,10 @@ paths:
       - Users
       summary: Reset all environment MFA for a user
       operationId: ResetUsersMFAAll
-      description: "Reset all environment MFA factors for a user.\n\n<div>\n  <code>delete:user_mfa</code>\n</div>"
+      description: 'Reset all environment MFA factors for a user.
+
+
+        delete:user_mfa'
       parameters:
       - name: user_id
         in: path
@@ -519,7 +572,10 @@ paths:
       - Users
       summary: Reset specific environment MFA for a user
       operationId: ResetUsersMFA
-      description: "Reset a specific environment MFA factor for a user.\n\n<div>\n  <code>delete:user_mfa</code>\n</div>"
+      description: 'Reset a specific environment MFA factor for a user.
+
+
+        delete:user_mfa'
       parameters:
       - name: user_id
         in: path

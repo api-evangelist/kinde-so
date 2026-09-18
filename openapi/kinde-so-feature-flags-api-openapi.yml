@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Feature Flags API
+  title: Kinde Management Feature Flags API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Feature Flags
       summary: Create Feature Flag
       operationId: CreateFeatureFlag
-      description: "Create feature flag.\n\n<div>\n  <code>create:feature_flags</code>\n</div>"
+      description: 'Create feature flag.
+
+
+        create:feature_flags'
       responses:
         '200':
           description: OK
@@ -43,7 +46,10 @@ paths:
       - Feature Flags
       summary: Replace Feature Flag
       operationId: UpdateFeatureFlag
-      description: "Update feature flag.\n\n<div>\n  <code>update:feature_flags</code>\n</div>"
+      description: 'Update feature flag.
+
+
+        update:feature_flags'
       parameters:
       - name: feature_flag_key
         in: path
@@ -97,7 +103,10 @@ paths:
       - Feature Flags
       summary: Delete Feature Flag
       operationId: DeleteFeatureFlag
-      description: "Delete feature flag\n\n<div>\n  <code>delete:feature_flags</code>\n</div>"
+      description: 'Delete feature flag
+
+
+        delete:feature_flags'
       parameters:
       - name: feature_flag_key
         in: path

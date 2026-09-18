@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Applications API
+  title: Kinde Management Applications API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Applications
       summary: Get applications
       operationId: getApplications
-      description: "Get a list of applications / clients.\n\n<div>\n  <code>read:applications</code>\n</div>"
+      description: 'Get a list of applications / clients.
+
+
+        read:applications'
       parameters:
       - name: sort
         in: query
@@ -58,7 +61,10 @@ paths:
       - Applications
       summary: Create application
       operationId: createApplication
-      description: "Create a new client.\n\n<div>\n  <code>create:applications</code>\n</div>"
+      description: 'Create a new client.
+
+
+        create:applications'
       responses:
         '200':
           description: OK
@@ -76,7 +82,10 @@ paths:
       - Applications
       summary: Get application
       operationId: getApplication
-      description: "Gets an application given the application's ID.\n\n<div>\n  <code>read:applications</code>\n</div>"
+      description: 'Gets an application given the application''s ID.
+
+
+        read:applications'
       parameters:
       - name: application_id
         in: path
@@ -100,7 +109,10 @@ paths:
       - Applications
       summary: Update Application
       operationId: updateApplication
-      description: "Updates a client's settings. For more information, read [Applications in Kinde](https://docs.kinde.com/build/applications/about-applications)\n\n<div>\n  <code>update:applications</code>\n</div>"
+      description: 'Updates a client''s settings. For more information, read Applications in Kinde
+
+
+        update:applications'
       parameters:
       - name: application_id
         in: path
@@ -124,7 +136,10 @@ paths:
       - Applications
       summary: Delete application
       operationId: deleteApplication
-      description: "Delete a client / application.\n\n<div>\n  <code>delete:applications</code>\n</div>"
+      description: 'Delete a client / application.
+
+
+        delete:applications'
       parameters:
       - name: application_id
         in: path
@@ -149,7 +164,10 @@ paths:
       - Applications
       summary: Get connections
       operationId: GetApplicationConnections
-      description: "Gets all connections for an application.\n\n<div>\n  <code>read:application_connections</code>\n</div>"
+      description: 'Gets all connections for an application.
+
+
+        read:application_connections'
       parameters:
       - name: application_id
         in: path
@@ -174,7 +192,10 @@ paths:
       - Applications
       summary: Enable connection
       operationId: EnableConnection
-      description: "Enable an auth connection for an application.\n\n<div>\n  <code>create:application_connections</code>\n</div>"
+      description: 'Enable an auth connection for an application.
+
+
+        create:application_connections'
       parameters:
       - name: application_id
         in: path
@@ -204,7 +225,10 @@ paths:
       - Applications
       summary: Remove connection
       operationId: RemoveConnection
-      description: "Turn off an auth connection for an application\n\n<div>\n  <code>delete:application_connections</code>\n</div>"
+      description: 'Turn off an auth connection for an application
+
+
+        delete:application_connections'
       parameters:
       - name: application_id
         in: path
@@ -235,7 +259,10 @@ paths:
       - Applications
       summary: Get property values
       operationId: getApplicationPropertyValues
-      description: "Gets properties for an application by client ID.\n\n<div>\n  <code>read:application_properties</code>\n</div>"
+      description: 'Gets properties for an application by client ID.
+
+
+        read:application_properties'
       responses:
         '200':
           description: OK
@@ -253,7 +280,10 @@ paths:
       - Applications
       summary: Update property
       operationId: updateApplicationsProperty
-      description: "Update application property value.\n\n<div>\n  <code>update:application_properties</code>\n</div>"
+      description: 'Update application property value.
+
+
+        update:application_properties'
       responses:
         '200':
           description: OK
@@ -271,7 +301,10 @@ paths:
       - Applications
       summary: Update application tokens
       operationId: updateApplicationTokens
-      description: "Configure tokens for an application.\n  <div>\n    <code>update:application_tokens</code>\n  </div>"
+      description: 'Configure tokens for an application.
+
+
+        update:application_tokens'
       parameters:
       - name: application_id
         in: path

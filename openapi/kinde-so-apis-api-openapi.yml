@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys APIs API
+  title: Kinde Management AP Is API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - APIs
       summary: Get APIs
       operationId: getAPIs
-      description: "Returns a list of your APIs. The APIs are returned sorted by name.\n\n<div>\n  <code>read:apis</code>\n</div>"
+      description: 'Returns a list of your APIs. The APIs are returned sorted by name.
+
+
+        read:apis'
       parameters:
       - name: expand
         in: query
@@ -48,7 +51,10 @@ paths:
       - APIs
       summary: Create API
       operationId: addAPIs
-      description: "Register a new API. For more information read [Register and manage APIs](https://docs.kinde.com/developer-tools/your-apis/register-manage-apis/).\n\n<div>\n  <code>create:apis</code>\n</div>"
+      description: 'Register a new API. For more information read Register and manage APIs.
+
+
+        create:apis'
       responses:
         '200':
           description: OK
@@ -66,7 +72,10 @@ paths:
       - APIs
       summary: Get API
       operationId: getAPI
-      description: "Retrieve API details by ID.\n\n<div>\n  <code>read:apis</code>\n</div>"
+      description: 'Retrieve API details by ID.
+
+
+        read:apis'
       responses:
         '200':
           description: OK
@@ -83,7 +92,10 @@ paths:
       - APIs
       summary: Delete API
       operationId: deleteAPI
-      description: "Delete an API you previously created.\n\n<div>\n  <code>delete:apis</code>\n</div>"
+      description: 'Delete an API you previously created.
+
+
+        delete:apis'
       responses:
         '200':
           description: OK
@@ -101,7 +113,10 @@ paths:
       - APIs
       summary: Get API scopes
       operationId: getAPIScopes
-      description: "Retrieve API scopes by API ID.\n\n<div>\n  <code>read:api_scopes</code>\n</div>"
+      description: 'Retrieve API scopes by API ID.
+
+
+        read:api_scopes'
       parameters:
       - name: api_id
         in: path
@@ -125,7 +140,10 @@ paths:
       - APIs
       summary: Create API scope
       operationId: addAPIScope
-      description: "Create a new API scope.\n\n<div>\n  <code>create:api_scopes</code>\n</div>"
+      description: 'Create a new API scope.
+
+
+        create:api_scopes'
       parameters:
       - name: api_id
         in: path
@@ -150,7 +168,10 @@ paths:
       - APIs
       summary: Get API scope
       operationId: getAPIScope
-      description: "Retrieve API scope by API ID.\n\n<div>\n  <code>read:api_scopes</code>\n</div>"
+      description: 'Retrieve API scope by API ID.
+
+
+        read:api_scopes'
       parameters:
       - name: api_id
         in: path
@@ -180,7 +201,10 @@ paths:
       - APIs
       summary: Update API scope
       operationId: updateAPIScope
-      description: "Update an API scope.\n\n<div>\n  <code>update:api_scopes</code>\n</div>"
+      description: 'Update an API scope.
+
+
+        update:api_scopes'
       parameters:
       - name: api_id
         in: path
@@ -210,7 +234,10 @@ paths:
       - APIs
       summary: Delete API scope
       operationId: deleteAPIScope
-      description: "Delete an API scope you previously created.\n\n<div>\n  <code>delete:apis_scopes</code>\n</div>"
+      description: 'Delete an API scope you previously created.
+
+
+        delete:apis_scopes'
       parameters:
       - name: api_id
         in: path
@@ -241,7 +268,10 @@ paths:
       - APIs
       summary: Authorize API applications
       operationId: updateAPIApplications
-      description: "Authorize applications to be allowed to request access tokens for an API\n\n<div>\n  <code>update:apis</code>\n</div>"
+      description: 'Authorize applications to be allowed to request access tokens for an API
+
+
+        update:apis'
       responses:
         '200':
           description: OK
@@ -259,7 +289,10 @@ paths:
       - APIs
       summary: Add scope to API application
       operationId: addAPIApplicationScope
-      description: "Add a scope to an API application.\n\n<div>\n  <code>create:api_application_scopes</code>\n</div>"
+      description: 'Add a scope to an API application.
+
+
+        create:api_application_scopes'
       parameters:
       - name: api_id
         in: path
@@ -295,7 +328,10 @@ paths:
       - APIs
       summary: Delete API application scope
       operationId: deleteAPIApplicationScope
-      description: "Delete an API application scope you previously created.\n\n<div>\n  <code>delete:apis_application_scopes</code>\n</div>"
+      description: 'Delete an API application scope you previously created.
+
+
+        delete:apis_application_scopes'
       parameters:
       - name: api_id
         in: path

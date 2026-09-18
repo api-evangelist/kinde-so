@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Permissions API
+  title: Kinde Management Permissions API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Permissions
       summary: List Permissions
       operationId: GetPermissions
-      description: "The returned list can be sorted by permission name or permission ID in ascending or descending order. The number of records to return at a time can also be controlled using the `page_size` query string parameter.\n\n<div>\n  <code>read:permissions</code>\n</div>"
+      description: 'The returned list can be sorted by permission name or permission ID in ascending or descending order. The number of records to return at a time can also be controlled using the `page_size` query string parameter.
+
+
+        read:permissions'
       parameters:
       - name: sort
         in: query
@@ -58,7 +61,10 @@ paths:
       - Permissions
       summary: Create Permission
       operationId: CreatePermission
-      description: "Create a new permission.\n\n<div>\n  <code>create:permissions</code>\n</div>"
+      description: 'Create a new permission.
+
+
+        create:permissions'
       responses:
         '200':
           description: OK
@@ -76,7 +82,10 @@ paths:
       - Permissions
       summary: Update Permission
       operationId: UpdatePermissions
-      description: "Update permission\n\n<div>\n  <code>update:permissions</code>\n</div>"
+      description: 'Update permission
+
+
+        update:permissions'
       parameters:
       - name: permission_id
         in: path
@@ -100,7 +109,10 @@ paths:
       - Permissions
       summary: Delete Permission
       operationId: DeletePermission
-      description: "Delete permission\n\n<div>\n  <code>delete:permissions</code>\n</div>"
+      description: 'Delete permission
+
+
+        delete:permissions'
       parameters:
       - name: permission_id
         in: path

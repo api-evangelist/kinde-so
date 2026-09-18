@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Kinde Management API Keys Connected Apps API
+  title: Kinde Management Connected Apps API
   version: '1'
-  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing. Base URL is subdomain-scoped to your business (https://{subdomain}.kinde.com/api/v1). Authenticated with a Bearer JWT access token obtained via the OAuth2 client_credentials flow from a machine-to-machine (M2M) application. This document is grounded in the official Kinde Management API specification (https://api-spec.kinde.com/kinde-management-api-spec.yaml).
+  description: The Kinde Management API programmatically manages a Kinde business - users, organizations, roles, permissions, feature flags, applications, connections, APIs and scopes, subscribers, properties, webhooks, and billing.
   contact:
     name: Kinde Support Team
     email: support@kinde.com
@@ -25,7 +25,10 @@ paths:
       - Connected Apps
       summary: Get Connected App URL
       operationId: GetConnectedAppAuthUrl
-      description: "Get a URL that authenticates and authorizes a user to a third-party connected app.\n\n<div>\n  <code>read:connected_apps</code>\n</div>"
+      description: 'Get a URL that authenticates and authorizes a user to a third-party connected app.
+
+
+        read:connected_apps'
       parameters:
       - name: key_code_ref
         in: query
@@ -65,7 +68,10 @@ paths:
       - Connected Apps
       summary: Get Connected App Token
       operationId: GetConnectedAppToken
-      description: "Get an access token that can be used to call the third-party provider linked to the connected app.\n\n<div>\n  <code>read:connected_apps</code>\n</div>"
+      description: 'Get an access token that can be used to call the third-party provider linked to the connected app.
+
+
+        read:connected_apps'
       parameters:
       - name: session_id
         in: query
@@ -90,7 +96,10 @@ paths:
       - Connected Apps
       summary: Revoke Connected App Token
       operationId: RevokeConnectedAppToken
-      description: "Revoke the tokens linked to the connected app session.\n\n<div>\n  <code>create:connected_apps</code>\n</div>"
+      description: 'Revoke the tokens linked to the connected app session.
+
+
+        create:connected_apps'
       parameters:
       - name: session_id
         in: query
